@@ -4,7 +4,7 @@ import { UnifiedMobileNav } from "@/components/docs/mobile-nav";
 
 export default function DocsLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen bg-slate-900 relative overflow-hidden">
+    <div className="min-h-screen bg-slate-900 relative overflow-hidden py-12 lg:py-16">
       <div className="absolute inset-0 bg-linear-to-br from-slate-900 via-blue-950 to-slate-900" />
 
       {/* Animated linear orbs */}

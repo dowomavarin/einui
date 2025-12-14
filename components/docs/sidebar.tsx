@@ -74,7 +74,6 @@ const navigation: NavSection[] = [
     title: "Registry",
     items: [
       { title: "Overview", href: "/docs/registry", icon: <Package className="h-4 w-4" /> },
-      { title: "registry.json", href: "/docs/registry/schema", icon: <FileJson className="h-4 w-4" /> },
     ],
   },
   {

@@ -63,7 +63,7 @@ export default function AdminBlockPage() {
   const [searchQuery, setSearchQuery] = useState("")
 
   return (
-    <div className="container mx-auto px-4 py-8 lg:py-12 max-w-6xl">
+    <div className="container max-w-4xl mx-auto px-4 py-12 lg:py-16">
       <PageHeader
         title="Admin Panel"
         description="A complete admin dashboard block featuring analytics, user management, and settings panels."

@@ -118,7 +118,7 @@ export default function RegistryPage() {
   const baseUrl = typeof window !== "undefined" ? window.location.origin : ""
 
   return (
-    <div className="container max-w-5xl mx-auto px-4 py-12 lg:py-16">
+    <div className="container max-w-5xl mx-auto px-4 ">
       {/* Animated background orbs */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" />
