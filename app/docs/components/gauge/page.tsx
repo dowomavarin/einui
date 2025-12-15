@@ -1,0 +1,66 @@
+"use client"
+
+import { PageHeader } from "@/components/docs/page-header"
+import { ComponentPreview } from "@/components/docs/component-preview"
+import { CLIInstall } from "@/components/docs/cli-install"
+import { GlassGauge } from "@/registry/innovative/glass-gauge"
+
+
+const basicCode = `import { GlassGauge } from "@/components/liquid-glass"
+
+<GlassGauge value={75} label="Progress" />`
+
+const sizesCode = `<GlassGauge value={60} size="sm" />
+<GlassGauge value={75} size="md" />
+<GlassGauge value={90} size="lg" />`
+
+const colorsCode = `<GlassGauge value={85} colorScheme="cyan" />
+<GlassGauge value={70} colorScheme="purple" />
+<GlassGauge value={95} colorScheme="gradient" />`
+
+export default function GaugePage() {
+  return (
+    <div className="container mx-auto px-4 py-8 lg:py-12 max-w-4xl">
+      <PageHeader
+        title="Gauge"
+        description="A circular gauge/meter component for displaying percentages, scores, or progress with animated liquid fill effects and customizable colors."
+      />
+
+      <CLIInstall componentName="glass-gauge" />
+
+      <ComponentPreview
+        title="Basic Gauge"
+        description="A simple gauge with value and label."
+        preview={<GlassGauge value={75} label="Progress" />}
+        code={basicCode}
+      />
+
+      <ComponentPreview
+        title="Sizes"
+        description="Available in small, medium, and large sizes."
+        preview={
+          <div className="flex items-end gap-8">
+            <GlassGauge value={60} size="sm" label="Small" />
+            <GlassGauge value={75} size="md" label="Medium" />
+            <GlassGauge value={90} size="lg" label="Large" />
+          </div>
+        }
+        code={sizesCode}
+      />
+
+      <ComponentPreview
+        title="Color Schemes"
+        description="Multiple color schemes including gradient option."
+        preview={
+          <div className="flex flex-wrap items-center justify-center gap-8">
+            <GlassGauge value={85} colorScheme="cyan" label="Cyan" />
+            <GlassGauge value={70} colorScheme="purple" label="Purple" />
+            <GlassGauge value={60} colorScheme="green" label="Green" />
+            <GlassGauge value={95} colorScheme="gradient" label="Gradient" />
+          </div>
+        }
+        code={colorsCode}
+      />
+    </div>
+  )
+}
