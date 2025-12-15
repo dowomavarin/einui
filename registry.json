@@ -7,7 +7,9 @@
       "name": "glass-avatar",
       "type": "registry:ui",
       "title": "Glass Avatar",
-      "dependencies": ["@radix-ui/react-avatar"],
+      "dependencies": [
+        "@radix-ui/react-avatar"
+      ],
       "description": "Circular profile images with gradient glow effects and fallback initials for user representation.",
       "files": [
         {
@@ -21,7 +23,9 @@
       "type": "registry:ui",
       "title": "Glass Badge",
       "description": "Small visual indicators for status, labels, or categories with frosted glass styling and color variants.",
-      "dependencies": ["class-variance-authority"],
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "files": [
         {
           "path": "registry/liquid-glass/glass-badge.tsx",
@@ -34,7 +38,10 @@
       "type": "registry:ui",
       "title": "Glass Button",
       "description": "Interactive button components with multiple variants, sizes, and optional glow effects.",
-      "dependencies": ["@radix-ui/react-slot", "class-variance-authority"],
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority"
+      ],
       "files": [
         {
           "path": "registry/liquid-glass/glass-button.tsx",
@@ -59,7 +66,10 @@
       "type": "registry:ui",
       "title": "Glass Dialog",
       "description": "Modal dialog components with backdrop blur and smooth animations for confirmations and forms.",
-      "dependencies": ["@radix-ui/react-dialog", "lucide-react"],
+      "dependencies": [
+        "@radix-ui/react-dialog",
+        "lucide-react"
+      ],
       "files": [
         {
           "path": "registry/liquid-glass/glass-dialog.tsx",
@@ -84,7 +94,9 @@
       "type": "registry:ui",
       "title": "Glass Progress",
       "description": "Visual indicators for task completion with animated gradient fill and glow effects.",
-      "dependencies": ["@radix-ui/react-progress"],
+      "dependencies": [
+        "@radix-ui/react-progress"
+      ],
       "files": [
         {
           "path": "registry/liquid-glass/glass-progress.tsx",
@@ -97,7 +109,9 @@
       "type": "registry:ui",
       "title": "Glass Slider",
       "description": "Range input controls with gradient track, glow effects, and smooth thumb interaction.",
-      "dependencies": ["@radix-ui/react-slider"],
+      "dependencies": [
+        "@radix-ui/react-slider"
+      ],
       "files": [
         {
           "path": "registry/liquid-glass/glass-slider.tsx",
@@ -110,7 +124,9 @@
       "type": "registry:ui",
       "title": "Glass Switch",
       "description": "Toggle controls for binary options with smooth transitions and glow effects when activated.",
-      "dependencies": ["@radix-ui/react-switch"],
+      "dependencies": [
+        "@radix-ui/react-switch"
+      ],
       "files": [
         {
           "path": "registry/liquid-glass/glass-switch.tsx",
@@ -123,7 +139,9 @@
       "type": "registry:ui",
       "title": "Glass Tabs",
       "description": "Tabbed interface components with smooth transitions and glass morphism styling.",
-      "dependencies": ["@radix-ui/react-tabs"],
+      "dependencies": [
+        "@radix-ui/react-tabs"
+      ],
       "files": [
         {
           "path": "registry/liquid-glass/glass-tabs.tsx",
@@ -136,11 +154,115 @@
       "type": "registry:ui",
       "title": "Glass Tooltip",
       "description": "Contextual information popups with glass morphism styling and smooth animations on hover.",
-      "dependencies": ["@radix-ui/react-tooltip"],
+      "dependencies": [
+        "@radix-ui/react-tooltip"
+      ],
       "files": [
         {
           "path": "registry/liquid-glass/glass-tooltip.tsx",
           "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "glass-command-palette",
+      "type": "registry:component",
+      "title": "Glass Command Palette",
+      "description": "A spotlight-style command palette with keyboard navigation, search filtering, customizable positioning, and glass morphism styling.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/innovative/glass-command-palette.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "glass-notification",
+      "type": "registry:component",
+      "title": "Glass Notification",
+      "description": "A customizable notification system with glass morphism styling, allowing for different types of messages and actions.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/innovative/glass-notification.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "glass-dock",
+      "type": "registry:component",
+      "title": "Glass Dock",
+      "description": "A dock component with glass morphism styling and smooth animations.",
+      "files": [
+        {
+          "path": "registry/innovative/glass-dock.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "glass-gauge",
+      "type": "registry:component",
+      "title": "Glass Gauge",
+      "description": "A gauge component with glass morphism styling, suitable for displaying progress or performance metrics.",
+      "files": [
+        {
+          "path": "registry/innovative/glass-gauge.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "glass-morph-card",
+      "type": "registry:component",
+      "title": "Glass Morph Card",
+      "description": "A card component with a morphing glass effect, suitable for displaying content in a visually appealing way.",
+      "files": [
+        {
+          "path": "registry/innovative/glass-morph-card.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "glass-ripple",
+      "type": "registry:component",
+      "title": "Glass Ripple",
+      "description": "A ripple effect component that can be applied to various elements for a dynamic interaction experience.",
+      "files": [
+        {
+          "path": "registry/innovative/glass-ripple.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "glass-spotlight",
+      "type": "registry:component",
+      "title": "Glass Spotlight",
+      "description": "A spotlight component that highlights specific areas of the UI with a glass morphism effect.",
+      "files": [
+        {
+          "path": "registry/innovative/glass-spotlight.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "glass-timeline",
+      "type": "registry:component",
+      "title": "Glass Timeline",
+      "description": "A timeline component with glass morphism styling, suitable for displaying events or processes in a chronological order.",
+      "files": [
+        {
+          "path": "registry/innovative/glass-timeline.tsx",
+          "type": "registry:component"
         }
       ]
     },
@@ -160,7 +282,9 @@
         "https://ui.eindev.ir/r/glass-progress.json",
         "https://ui.eindev.ir/r/glass-switch.json"
       ],
-      "dependencies": ["lucide-react"],
+      "dependencies": [
+        "lucide-react"
+      ],
       "files": [
         {
           "path": "registry/blocks/admin/page.tsx",
