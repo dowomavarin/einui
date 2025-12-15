@@ -35,9 +35,9 @@ export default function IntroductionPage() {
           <GlassCardDescription>Get up and running in seconds with a single command</GlassCardDescription>
         </GlassCardHeader>
         <GlassCardContent>
-          <CodeBlockWithCopy code="npx shadcn@latest add https://ui.eindev.ir/r/glass-card" />
+          <CodeBlockWithCopy code="npx shadcn@latest add @einui/glass-card" />
           <p className="mt-4 text-sm text-white/60">Or add all components at once:</p>
-          <CodeBlockWithCopy code="npx shadcn@latest add https://ui.eindev.ir/r/glass-button glass-input glass-dialog glass-tabs" />
+          <CodeBlockWithCopy code="npx shadcn@latest add @einui/glass-button @einui/glass-input" />
         </GlassCardContent>
       </GlassCard>
 

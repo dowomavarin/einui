@@ -9,7 +9,7 @@ interface CLIInstallProps {
 
 export function CLIInstall({ componentName }: CLIInstallProps) {
   const [copied, setCopied] = useState(false)
-  const command = `npx shadcn@latest add https://ui.eindev.ir/r/${componentName}.json`
+  const command = `npx shadcn@latest add @einui/${componentName}`
 
   const copyToClipboard = async () => {
     await navigator.clipboard.writeText(command)

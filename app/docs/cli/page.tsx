@@ -15,13 +15,13 @@ const commands = [
     name: "add",
     description: "Add a component to your project",
     usage: "npx shadcn@latest add [component]",
-    example: "npx shadcn@latest add @ein/glass-card",
+    example: "npx shadcn@latest add @einui/glass-card",
   },
   {
     name: "diff",
     description: "Check for differences between local and remote components",
     usage: "npx shadcn@latest diff [component]",
-    example: "npx shadcn@latest diff @ein/glass-button",
+    example: "npx shadcn@latest diff @einui/glass-button",
   },
 ]
 
@@ -53,7 +53,7 @@ export default function CLIPage() {
           <CodeBlockWithCopy code="npx shadcn@latest init" />
 
           <p className="text-white/70">Then add any Ein UI component:</p>
-          <CodeBlockWithCopy code="npx shadcn@latest add https://ui.eindev.ir/r/glass-card" />
+          <CodeBlockWithCopy code="npx shadcn@latest add @einui/glass-card" />
         </GlassCardContent>
       </GlassCard>
 
@@ -120,14 +120,14 @@ export default function CLIPage() {
     "hooks": "@/hooks"
   },
   "registries": {
-    "@ein": "https://ui.eindev.ir/r/{name}"
+    "@einui": "https://ui.eindev.ir/r/{name}"
   }
 }`}
             filename="components.json"
           />
 
           <p className="text-white/70">Now you can install components using the short syntax:</p>
-          <CodeBlockWithCopy code="npx shadcn@latest add @ein/glass-card @ein/glass-button" />
+          <CodeBlockWithCopy code="npx shadcn@latest add @einui/glass-card @einui/glass-button" />
         </GlassCardContent>
       </GlassCard>
 

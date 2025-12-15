@@ -15,19 +15,19 @@ import { Package, Copy, Check, ExternalLink, Layers, Sparkles, ArrowLeft } from 
 
 const registryItems = [
   {
-    name: "glass-card",
+    name: "glass-cards",
     title: "Glass Card",
     description: "Card with transparency and glow effects",
     type: "component",
   },
   {
-    name: "glass-button",
+    name: "glass-buttons",
     title: "Glass Button",
     description: "Button with multiple variants and glow",
     type: "component",
   },
   {
-    name: "glass-input",
+    name: "glass-inputs",
     title: "Glass Input",
     description: "Input field with focus glow animation",
     type: "component",
@@ -39,7 +39,7 @@ const registryItems = [
     type: "component",
   },
   {
-    name: "glass-dialog",
+    name: "glass-dialogs",
     title: "Glass Dialog",
     description: "Modal dialog with backdrop blur",
     type: "component",
@@ -78,12 +78,6 @@ const registryItems = [
     name: "glass-tooltip",
     title: "Glass Tooltip",
     description: "Tooltip with glass styling",
-    type: "component",
-  },
-  {
-    name: "liquid-glass-menu",
-    title: "Liquid Glass Menu",
-    description: "Complete navigation menu",
     type: "component",
   },
   {
@@ -163,8 +157,8 @@ export default function RegistryPage() {
             <div>
               <h3 className="text-white font-medium mb-3">1. Add the registry to your components.json</h3>
               <div className="bg-black/30 rounded-lg p-4 font-mono text-sm text-white/80 flex items-center justify-between">
-                <code>{`"registries": { "@ein": "${baseUrl}/api/r/{name}" }`}</code>
-                <CopyButton text={`"registries": { "@ein": "${baseUrl}/api/r/{name}" }`} />
+                <code>{`"registries": { "@einui": "${baseUrl}/api/r/{name}" }`}</code>
+                <CopyButton text={`"registries": { "@einui": "${baseUrl}/api/r/{name}" }`} />
               </div>
             </div>
 
@@ -210,20 +204,20 @@ export default function RegistryPage() {
                 <div className="space-y-3">
                   {/* Install command */}
                   <div className="bg-black/20 rounded-lg p-3 font-mono text-xs text-white/70 flex items-center justify-between">
-                    <code className="truncate">@ein/{item.name}</code>
-                    <CopyButton text={`npx shadcn@latest add @ein/${item.name}`} />
+                    <code className="truncate">@einui/{item.name}</code>
+                    <CopyButton text={`npx shadcn@latest add @einui/${item.name}`} />
                   </div>
 
                   {/* Actions */}
                   <div className="flex gap-2">
-                    <Link href={`/api/r/${item.name}`} target="_blank" className="flex-1">
+                    <Link href={`/r/${item.name}.json`} target="_blank" className="flex-1">
                       <GlassButton variant="outline" size="sm" className="w-full">
                         <ExternalLink className="h-3 w-3 mr-1" />
                         View JSON
                       </GlassButton>
                     </Link>
                     {item.type === "component" && (
-                      <Link href={`/components/${item.name.replace("glass-", "")}s`} className="flex-1">
+                      <Link href={`/docs/components/${item.name.replace("glass-", "")}`} className="flex-1">
                         <GlassButton variant="ghost" size="sm" className="w-full">
                           Preview
                         </GlassButton>

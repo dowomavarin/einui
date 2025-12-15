@@ -1,29 +1,34 @@
-import Link from "next/link"
+import Link from "next/link";
 import {
   GlassCard,
   GlassCardContent,
   GlassCardDescription,
   GlassCardHeader,
   GlassCardTitle,
-} from "@/registry/liquid-glass/glass-card"
-import { GlassButton } from "@/registry/liquid-glass/glass-button"
-import { GlassTabs, GlassTabsList, GlassTabsTrigger, GlassTabsContent } from "@/registry/liquid-glass/glass-tabs"
-import { CodeBlockWithCopy } from "@/components/docs/code-block-with-copy"
-import { ArrowRight, ArrowLeft, Download, Package, Terminal, FileCode } from "lucide-react"
+} from "@/registry/liquid-glass/glass-card";
+import { GlassButton } from "@/registry/liquid-glass/glass-button";
+import {
+  GlassTabs,
+  GlassTabsList,
+  GlassTabsTrigger,
+  GlassTabsContent,
+} from "@/registry/liquid-glass/glass-tabs";
+import { CodeBlockWithCopy } from "@/components/docs/code-block-with-copy";
+import { ArrowRight, ArrowLeft, Download, Package, Terminal, FileCode } from "lucide-react";
 
 const installCommands = {
-  "glass-card": "npx shadcn@latest add https://ui.eindev.ir/r/glass-card",
-  "glass-button": "npx shadcn@latest add https://ui.eindev.ir/r/glass-button",
-  "glass-input": "npx shadcn@latest add https://ui.eindev.ir/r/glass-input",
-  "glass-dialog": "npx shadcn@latest add https://ui.eindev.ir/r/glass-dialog",
-  "glass-tabs": "npx shadcn@latest add https://ui.eindev.ir/r/glass-tabs",
-  "glass-badge": "npx shadcn@latest add https://ui.eindev.ir/r/glass-badge",
-  "glass-avatar": "npx shadcn@latest add https://ui.eindev.ir/r/glass-avatar",
-  "glass-progress": "npx shadcn@latest add https://ui.eindev.ir/r/glass-progress",
-  "glass-switch": "npx shadcn@latest add https://ui.eindev.ir/r/glass-switch",
-  "glass-slider": "npx shadcn@latest add https://ui.eindev.ir/r/glass-slider",
-  "glass-tooltip": "npx shadcn@latest add https://ui.eindev.ir/r/glass-tooltip",
-}
+  "glass-card": "npx shadcn@latest add @einui/glass-card",
+  "glass-button": "npx shadcn@latest add @einui/glass-button",
+  "glass-input": "npx shadcn@latest add @einui/glass-input",
+  "glass-dialog": "npx shadcn@latest add @einui/glass-dialog",
+  "glass-tabs": "npx shadcn@latest add @einui/glass-tabs",
+  "glass-badge": "npx shadcn@latest add @einui/glass-badge",
+  "glass-avatar": "npx shadcn@latest add @einui/glass-avatar",
+  "glass-progress": "npx shadcn@latest add @einui/glass-progress",
+  "glass-switch": "npx shadcn@latest add @einui/glass-switch",
+  "glass-slider": "npx shadcn@latest add @einui/glass-slider",
+  "glass-tooltip": "npx shadcn@latest add @einui/glass-tooltip",
+};
 
 export default function InstallationPage() {
   return (
@@ -31,7 +36,9 @@ export default function InstallationPage() {
       {/* Header */}
       <div className="mb-12">
         <div className="flex items-center gap-2 mb-4">
-          <span className="rounded-full bg-cyan-500/20 px-3 py-1 text-xs font-medium text-cyan-400">Get Started</span>
+          <span className="rounded-full bg-cyan-500/20 px-3 py-1 text-xs font-medium text-cyan-400">
+            Get Started
+          </span>
         </div>
         <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Installation</h1>
         <p className="text-xl text-white/60 leading-relaxed">
@@ -55,7 +62,8 @@ export default function InstallationPage() {
             <li>Shadcn UI initialized in your project</li>
           </ul>
           <p className="text-sm text-white/50">
-            New to Shadcn? Run <code className="bg-white/10 px-2 py-0.5 rounded">npx shadcn@latest init</code> first.
+            New to Shadcn? Run{" "}
+            <code className="bg-white/10 px-2 py-0.5 rounded">npx shadcn@latest init</code> first.
           </p>
         </GlassCardContent>
       </GlassCard>
@@ -80,32 +88,40 @@ export default function InstallationPage() {
             <GlassCard>
               <GlassCardHeader>
                 <GlassCardTitle>Using the Shadcn CLI</GlassCardTitle>
-                <GlassCardDescription>The fastest way to add components to your project</GlassCardDescription>
+                <GlassCardDescription>
+                  The fastest way to add components to your project
+                </GlassCardDescription>
               </GlassCardHeader>
               <GlassCardContent className="space-y-6">
                 <div>
                   <h4 className="text-white font-medium mb-3">1. Add a single component</h4>
-                  <CodeBlockWithCopy code="npx shadcn@latest add https://ui.eindev.ir/r/glass-card" />
+                  <CodeBlockWithCopy code="npx shadcn@latest add @einui/glass-card" />
                 </div>
 
                 <div>
                   <h4 className="text-white font-medium mb-3">2. Add multiple components</h4>
-                  <CodeBlockWithCopy code="npx shadcn@latest add https://ui.eindev.ir/r/glass-button https://ui.eindev.ir/r/glass-input" />
+                  <CodeBlockWithCopy code="npx shadcn@latest add @einui/glass-button @einui/glass-input" />
                 </div>
 
                 <div>
-                  <h4 className="text-white font-medium mb-3">3. Using the @ein registry namespace</h4>
-                  <p className="text-sm text-white/60 mb-3">Add the registry to your components.json first:</p>
+                  <h4 className="text-white font-medium mb-3">
+                    3. Using the @ein registry namespace
+                  </h4>
+                  <p className="text-sm text-white/60 mb-3">
+                    Add the registry to your components.json first:
+                  </p>
                   <CodeBlockWithCopy
                     code={`{
   "registries": {
-    "@ein": "https://ui.eindev.ir/r/{name}"
+    "@einui": "@einui/{name}"
   }
 }`}
                     filename="components.json"
                   />
-                  <p className="text-sm text-white/60 mt-4 mb-3">Then install using the namespace:</p>
-                  <CodeBlockWithCopy code="npx shadcn@latest add @ein/glass-card" />
+                  <p className="text-sm text-white/60 mt-4 mb-3">
+                    Then install using the namespace:
+                  </p>
+                  <CodeBlockWithCopy code="npx shadcn@latest add @einui/glass-card" />
                 </div>
               </GlassCardContent>
             </GlassCard>
@@ -133,7 +149,9 @@ export default function InstallationPage() {
 
                 <div>
                   <h4 className="text-white font-medium mb-3">3. Add CSS variables</h4>
-                  <p className="text-sm text-white/60 mb-3">Add the liquid glass styles to your globals.css:</p>
+                  <p className="text-sm text-white/60 mb-3">
+                    Add the liquid glass styles to your globals.css:
+                  </p>
                   <CodeBlockWithCopy
                     code={`/* Liquid Glass Utilities */
 .glass-glow::before {
@@ -200,5 +218,5 @@ export default function InstallationPage() {
         </Link>
       </div>
     </div>
-  )
+  );
 }

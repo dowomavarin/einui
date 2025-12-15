@@ -19,6 +19,6 @@
     "hooks": "@/hooks"
   },
   "registries": {
-    "@ein": "https://ui.eindev.ir/r/{name}.json"
+    "@einui": "https://ui.eindev.ir/r/{name}.json"
   }
 }

@@ -348,7 +348,7 @@ export default function HomePage() {
                 </div>
                 <div className="flex items-center gap-2 bg-black/30 rounded-xl p-3">
                   <code className="flex-1 text-sm md:text-base text-cyan-400 font-mono overflow-x-auto">
-                    npx shadcn@latest add https://ein-ui.vercel.app/r/glass-card.json
+                    npx shadcn@latest add @einui/glass-card
                   </code>
                   <button className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors text-white/60 hover:text-white">
                     <Copy className="size-4" />
