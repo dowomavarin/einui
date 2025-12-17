@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import type React from "react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { cn } from "@/lib/utils"
+import type React from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 import {
   BookOpen,
   Download,
@@ -37,18 +37,18 @@ import {
   Dock,
   Sparkles,
   Blocks,
-} from "lucide-react"
+} from "lucide-react";
 
 interface NavItem {
-  title: string
-  href: string
-  icon?: React.ReactNode
-  isNew?: boolean
+  title: string;
+  href: string;
+  icon?: React.ReactNode;
+  isNew?: boolean;
 }
 
 interface NavSection {
-  title: string
-  items: NavItem[]
+  title: string;
+  items: NavItem[];
 }
 
 const navigation: NavSection[] = [
@@ -65,17 +65,37 @@ const navigation: NavSection[] = [
   {
     title: "Components",
     items: [
-      { title: "Cards", href: "/docs/components/cards", icon: <Square className="size-4" /> },
-      { title: "Buttons", href: "/docs/components/buttons", icon: <LayoutGrid className="size-4" /> },
-      { title: "Dialogs", href: "/docs/components/dialogs", icon: <MessageSquare className="size-4" /> },
-      { title: "Inputs", href: "/docs/components/inputs", icon: <TextCursorInput className="size-4" /> },
-      { title: "Tabs", href: "/docs/components/tabs", icon: <Layers className="size-4" /> },
-      { title: "Badge", href: "/docs/components/badge", icon: <Info className="size-4" /> },
       { title: "Avatar", href: "/docs/components/avatar", icon: <User className="size-4" /> },
-      { title: "Progress", href: "/docs/components/progress", icon: <CheckCircle className="size-4" /> },
-      { title: "Switch", href: "/docs/components/switch", icon: <ToggleLeft className="size-4" /> },
+      { title: "Badge", href: "/docs/components/badge", icon: <Info className="size-4" /> },
+      {
+        title: "Buttons",
+        href: "/docs/components/buttons",
+        icon: <LayoutGrid className="size-4" />,
+      },
+      { title: "Cards", href: "/docs/components/cards", icon: <Square className="size-4" /> },
+      {
+        title: "Dialogs",
+        href: "/docs/components/dialogs",
+        icon: <MessageSquare className="size-4" />,
+      },
+      {
+        title: "Inputs",
+        href: "/docs/components/inputs",
+        icon: <TextCursorInput className="size-4" />,
+      },
+      {
+        title: "Progress",
+        href: "/docs/components/progress",
+        icon: <CheckCircle className="size-4" />,
+      },
       { title: "Slider", href: "/docs/components/slider", icon: <Sliders className="size-4" /> },
-      { title: "Tooltip", href: "/docs/components/tooltip", icon: <CircleDot className="size-4" /> },
+      { title: "Switch", href: "/docs/components/switch", icon: <ToggleLeft className="size-4" /> },
+      { title: "Tabs", href: "/docs/components/tabs", icon: <Layers className="size-4" /> },
+      {
+        title: "Tooltip",
+        href: "/docs/components/tooltip",
+        icon: <CircleDot className="size-4" />,
+      },
     ],
   },
   {
@@ -88,9 +108,15 @@ const navigation: NavSection[] = [
         isNew: true,
       },
       {
-        title: "Notifications",
-        href: "/docs/components/notifications",
-        icon: <Bell className="size-4" />,
+        title: "Dock",
+        href: "/docs/components/dock",
+        icon: <Dock className="size-4" />,
+        isNew: true,
+      },
+      {
+        title: "Gauge",
+        href: "/docs/components/gauge",
+        icon: <Gauge className="size-4" />,
         isNew: true,
       },
       {
@@ -99,10 +125,26 @@ const navigation: NavSection[] = [
         icon: <MousePointer className="size-4" />,
         isNew: true,
       },
-      { title: "Ripple", href: "/docs/components/ripple", icon: <Droplets className="size-4" />, isNew: true },
-      { title: "Timeline", href: "/docs/components/timeline", icon: <Clock className="size-4" />, isNew: true },
-      { title: "Gauge", href: "/docs/components/gauge", icon: <Gauge className="size-4" />, isNew: true },
-      { title: "Dock", href: "/docs/components/dock", icon: <Dock className="size-4" />, isNew: true },
+      {
+        title: "Notifications",
+        href: "/docs/components/notifications",
+        icon: <Bell className="size-4" />,
+        isNew: true,
+      },
+
+      {
+        title: "Ripple",
+        href: "/docs/components/ripple",
+        icon: <Droplets className="size-4" />,
+        isNew: true,
+      },
+      {
+        title: "Timeline",
+        href: "/docs/components/timeline",
+        icon: <Clock className="size-4" />,
+        isNew: true,
+      },
+
       // { title: "Spotlight", href: "/docs/components/spotlight", icon: <Sparkles className="size-4" />, isNew: true },
     ],
   },
@@ -115,12 +157,14 @@ const navigation: NavSection[] = [
   },
   {
     title: "Blocks",
-    items: [{ title: "Admin Panel", href: "/docs/blocks/admin", icon: <PanelLeft className="size-4" /> }],
+    items: [
+      { title: "Admin Panel", href: "/docs/blocks/admin", icon: <PanelLeft className="size-4" /> },
+    ],
   },
-]
+];
 
 export function UnifiedSidebar() {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   return (
     <aside className="fixed left-0 top-0 z-40 hidden h-screen w-72 border-r border-white/10 bg-black/60 backdrop-blur-2xl lg:block">
@@ -128,7 +172,7 @@ export function UnifiedSidebar() {
         {/* Logo */}
         <div className="flex h-16 items-center border-b border-white/10 px-6">
           <Link href="/">
-          <Blocks className="size-5" />
+            <Blocks className="size-5" />
           </Link>
         </div>
 
@@ -139,7 +183,9 @@ export function UnifiedSidebar() {
             href="/"
             className={cn(
               "mb-4 flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200",
-              pathname === "/" ? "bg-white/15 text-white" : "text-white/60 hover:bg-white/5 hover:text-white",
+              pathname === "/"
+                ? "bg-white/15 text-white"
+                : "text-white/60 hover:bg-white/5 hover:text-white"
             )}
           >
             <Home className="size-4" />
@@ -160,17 +206,19 @@ export function UnifiedSidebar() {
                         "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200",
                         pathname === item.href
                           ? "bg-linear-to-r from-cyan-500/20 to-purple-500/20 text-white shadow-[0_0_20px_rgba(59,130,246,0.2)]"
-                          : "text-white/60 hover:bg-white/5 hover:text-white",
+                          : "text-white/60 hover:bg-white/5 hover:text-white"
                       )}
                     >
                       {item.icon}
                       {item.title}
-                      {(item.isNew && pathname != item.href) && (
+                      {item.isNew && pathname != item.href && (
                         <span className="ml-auto rounded-full bg-cyan-500/20 px-2 py-0.5 text-[10px] font-medium text-cyan-400">
                           New
                         </span>
                       )}
-                      {pathname === item.href && <ChevronRight className="ml-auto size-4 text-white/40" />}
+                      {pathname === item.href && (
+                        <ChevronRight className="ml-auto size-4 text-white/40" />
+                      )}
                     </Link>
                   </li>
                 ))}
@@ -199,5 +247,5 @@ export function UnifiedSidebar() {
         </div>
       </div>
     </aside>
-  )
+  );
 }
