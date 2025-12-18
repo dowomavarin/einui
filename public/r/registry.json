@@ -276,7 +276,7 @@
       ],
       "files": [
         {
-          "path": "registry/widgets/glass-widget-base.tsx",
+          "path": "registry/widgets/base-widget.tsx",
           "type": "registry:ui"
         }
       ]
