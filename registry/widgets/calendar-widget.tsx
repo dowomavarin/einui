@@ -1,58 +1,63 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { cn } from "@/lib/utils"
-import { ChevronLeft, ChevronRight, Plus, Clock } from "lucide-react"
-import { GlassWidgetBase } from "./base-widget"
+import * as React from "react";
+import { cn } from "@/lib/utils";
+import { ChevronLeft, ChevronRight, Plus, Clock } from "lucide-react";
+import { GlassWidgetBase } from "./base-widget";
 
 interface CalendarWidgetProps {
-  date?: Date
-  selectedDate?: Date
-  onDateSelect?: (date: Date) => void
-  className?: string
+  date?: Date;
+  selectedDate?: Date;
+  onDateSelect?: (date: Date) => void;
+  className?: string;
 }
 
-function CalendarWidget({ date = new Date(), selectedDate, onDateSelect, className }: CalendarWidgetProps) {
-  const [currentMonth, setCurrentMonth] = React.useState(date)
-  const selected = selectedDate || date
+function CalendarWidget({
+  date = new Date(),
+  selectedDate,
+  onDateSelect,
+  className,
+}: CalendarWidgetProps) {
+  const [currentMonth, setCurrentMonth] = React.useState(date);
+  const selected = selectedDate || date;
 
-  const monthName = currentMonth.toLocaleDateString("en-US", { month: "short" })
-  const year = currentMonth.getFullYear()
+  const monthName = currentMonth.toLocaleDateString("en-US", { month: "short" });
+  const year = currentMonth.getFullYear();
 
-  const firstDay = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), 1)
-  const lastDay = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 0)
-  const startPadding = firstDay.getDay()
-  const daysInMonth = lastDay.getDate()
+  const firstDay = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), 1);
+  const lastDay = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 0);
+  const startPadding = firstDay.getDay();
+  const daysInMonth = lastDay.getDate();
 
   const days = Array.from({ length: startPadding + daysInMonth }, (_, i) => {
-    if (i < startPadding) return null
-    return i - startPadding + 1
-  })
+    if (i < startPadding) return null;
+    return i - startPadding + 1;
+  });
 
   const prevMonth = () => {
-    setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1))
-  }
+    setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1));
+  };
 
   const nextMonth = () => {
-    setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1))
-  }
+    setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1));
+  };
 
   const isSelected = (day: number) => {
     return (
       day === selected.getDate() &&
       currentMonth.getMonth() === selected.getMonth() &&
       currentMonth.getFullYear() === selected.getFullYear()
-    )
-  }
+    );
+  };
 
   const isToday = (day: number) => {
-    const today = new Date()
+    const today = new Date();
     return (
       day === today.getDate() &&
       currentMonth.getMonth() === today.getMonth() &&
       currentMonth.getFullYear() === today.getFullYear()
-    )
-  }
+    );
+  };
 
   return (
     <GlassWidgetBase className={cn("min-w-60", className)} size="sm" glowColor="purple">
@@ -87,7 +92,7 @@ function CalendarWidget({ date = new Date(), selectedDate, onDateSelect, classNa
             key={i}
             onClick={() => {
               if (day && onDateSelect) {
-                onDateSelect(new Date(currentMonth.getFullYear(), currentMonth.getMonth(), day))
+                onDateSelect(new Date(currentMonth.getFullYear(), currentMonth.getMonth(), day));
               }
             }}
             disabled={day === null}
@@ -96,7 +101,7 @@ function CalendarWidget({ date = new Date(), selectedDate, onDateSelect, classNa
               day === null && "invisible",
               day !== null && "text-white/70 hover:bg-white/15 cursor-pointer",
               day !== null && isSelected(day) && "bg-white/25 text-white font-medium shadow-sm",
-              day !== null && isToday(day) && !isSelected(day) && "ring-1 ring-cyan-400/50",
+              day !== null && isToday(day) && !isSelected(day) && "ring-1 ring-cyan-400/50"
             )}
           >
             {day}
@@ -104,18 +109,18 @@ function CalendarWidget({ date = new Date(), selectedDate, onDateSelect, classNa
         ))}
       </div>
     </GlassWidgetBase>
-  )
+  );
 }
 
 interface CompactCalendarWidgetProps {
-  date?: Date
-  className?: string
+  date?: Date;
+  className?: string;
 }
 
 function CompactCalendarWidget({ date = new Date(), className }: CompactCalendarWidgetProps) {
-  const dayName = date.toLocaleDateString("en-US", { weekday: "short" })
-  const monthName = date.toLocaleDateString("en-US", { month: "short" })
-  const dayNumber = date.getDate()
+  const dayName = date.toLocaleDateString("en-US", { weekday: "short" });
+  const monthName = date.toLocaleDateString("en-US", { month: "short" });
+  const dayNumber = date.getDate();
 
   return (
     <GlassWidgetBase
@@ -128,26 +133,30 @@ function CompactCalendarWidget({ date = new Date(), className }: CompactCalendar
       </div>
       <div className="text-6xl font-light text-white tracking-tight">{dayNumber}</div>
     </GlassWidgetBase>
-  )
+  );
 }
 
 interface Event {
-  id: string
-  title: string
-  time: string
-  color?: string
+  id: string;
+  title: string;
+  time: string;
+  color?: string;
 }
 
 interface EventsCalendarWidgetProps {
-  date?: Date
-  events?: Event[]
-  className?: string
+  date?: Date;
+  events?: Event[];
+  className?: string;
 }
 
-function EventsCalendarWidget({ date = new Date(), events = [], className }: EventsCalendarWidgetProps) {
-  const dayName = date.toLocaleDateString("en-US", { weekday: "long" })
-  const monthName = date.toLocaleDateString("en-US", { month: "long" })
-  const dayNumber = date.getDate()
+function EventsCalendarWidget({
+  date = new Date(),
+  events = [],
+  className,
+}: EventsCalendarWidgetProps) {
+  const dayName = date.toLocaleDateString("en-US", { weekday: "long" });
+  const monthName = date.toLocaleDateString("en-US", { month: "long" });
+  const dayNumber = date.getDate();
 
   return (
     <GlassWidgetBase className={cn("min-w-65", className)} size="lg" glowColor="purple">
@@ -185,7 +194,7 @@ function EventsCalendarWidget({ date = new Date(), events = [], className }: Eve
         <div className="text-center py-4 text-white/40 text-sm">No events today</div>
       )}
     </GlassWidgetBase>
-  )
+  );
 }
 
-export { CalendarWidget, CompactCalendarWidget, EventsCalendarWidget }
+export { CalendarWidget, CompactCalendarWidget, EventsCalendarWidget };
