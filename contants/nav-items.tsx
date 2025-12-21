@@ -27,6 +27,7 @@ import {
   Cloud,
   Package,
   PanelLeft,
+  Sparkles,
 } from "lucide-react";
 
 interface NavItem {
@@ -188,4 +189,11 @@ export const navigation: NavSection[] = [
       { title: "Admin Panel", href: "/docs/blocks/admin", icon: <PanelLeft className="size-4" /> },
     ],
   },
+];
+
+
+export const headerNavItems = [
+  { href: "/docs", label: "Docs", icon: BookOpen },
+  { href: "/docs/components/glass-avatar", label: "Components", icon: LayoutGrid },
+  { href: "/docs/components/weather-widget", label: "Widgets", icon: Sparkles, isNew: true },
 ];
