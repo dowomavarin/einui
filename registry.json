@@ -319,6 +319,42 @@
       ]
     },
     {
+      "name": "weather-widget",
+      "type": "registry:component",
+      "title": "Weather Widgets",
+      "description": "Weather widgets for displaying temperature, conditions, forecasts, and hourly data with liquid glass styling.",
+      "registryDependencies": [
+        "https://ui.eindev.ir/r/base-widget.json"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/widgets/weather-widget.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "stats-widget",
+      "type": "registry:component",
+      "title": "Stats Widgets",
+      "description": "Statistics and metrics widgets for displaying data, comparisons, and progress with liquid glass styling.",
+      "registryDependencies": [
+        "https://ui.eindev.ir/r/base-widget.json"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/widgets/stats-widget.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "admin-panel",
       "type": "registry:block",
       "title": "Admin Panel",
