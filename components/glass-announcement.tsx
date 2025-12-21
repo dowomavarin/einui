@@ -1,30 +1,37 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Link from "next/link"
-import { motion, type HTMLMotionProps, type Variants } from "framer-motion"
-import { cva, type VariantProps } from "class-variance-authority"
-import { cn } from "@/lib/utils"
-import { ArrowRight, Sparkles, X } from "lucide-react"
+import * as React from "react";
+import Link from "next/link";
+import { motion, type HTMLMotionProps, type Variants } from "framer-motion";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
+import { ArrowRight, Sparkles, X } from "lucide-react";
 
 const glassAnnouncementVariants = cva(
-  cn("relative overflow-hidden rounded-full", "backdrop-blur-xl border", "transition-all duration-300"),
+  cn(
+    "relative overflow-hidden rounded-full",
+    "backdrop-blur-xl border",
+    "transition-all duration-300"
+  ),
   {
     variants: {
       variant: {
         default: "bg-white/10 border-white/20 hover:bg-white/15",
-        primary: cn("bg-gradient-to-r from-cyan-500/20 to-blue-500/20", "border-cyan-400/30 hover:border-cyan-400/50"),
+        primary: cn(
+          "bg-gradient-to-r from-cyan-500/20 to-blue-500/20",
+          "border-cyan-400/30 hover:border-cyan-400/50"
+        ),
         purple: cn(
           "bg-gradient-to-r from-purple-500/20 to-pink-500/20",
-          "border-purple-400/30 hover:border-purple-400/50",
+          "border-purple-400/30 hover:border-purple-400/50"
         ),
         success: cn(
           "bg-gradient-to-r from-emerald-500/20 to-green-500/20",
-          "border-emerald-400/30 hover:border-emerald-400/50",
+          "border-emerald-400/30 hover:border-emerald-400/50"
         ),
         warning: cn(
           "bg-gradient-to-r from-amber-500/20 to-orange-500/20",
-          "border-amber-400/30 hover:border-amber-400/50",
+          "border-amber-400/30 hover:border-amber-400/50"
         ),
       },
       size: {
@@ -37,28 +44,28 @@ const glassAnnouncementVariants = cva(
       variant: "primary",
       size: "md",
     },
-  },
-)
+  }
+);
 
 export interface GlassAnnouncementProps
   extends Omit<HTMLMotionProps<"div">, "children">,
     VariantProps<typeof glassAnnouncementVariants> {
   /** The label/tag shown at the start (e.g., "New", "Update") */
-  label?: string
+  label?: string;
   /** Main announcement text */
-  children: React.ReactNode
+  children: React.ReactNode;
   /** Optional link to navigate to */
-  href?: string
+  href?: string;
   /** Show arrow icon */
-  showArrow?: boolean
+  showArrow?: boolean;
   /** Show sparkle icon */
-  showSparkle?: boolean
+  showSparkle?: boolean;
   /** Dismissible announcement */
-  dismissible?: boolean
+  dismissible?: boolean;
   /** Callback when dismissed */
-  onDismiss?: () => void
+  onDismiss?: () => void;
   /** Pulse animation on the label */
-  pulse?: boolean
+  pulse?: boolean;
 }
 
 const announcementVariants: Variants = {
@@ -67,7 +74,7 @@ const announcementVariants: Variants = {
     opacity: 1,
     y: 0,
     transition: {
-      type: "spring" as const,
+      type: "spring",
       duration: 0.4,
       bounce: 0.3,
     },
@@ -75,7 +82,7 @@ const announcementVariants: Variants = {
   hover: {
     scale: 1.02,
     transition: {
-      type: "spring" as const,
+      type: "spring",
       duration: 0.2,
       bounce: 0.5,
     },
@@ -86,7 +93,7 @@ const announcementVariants: Variants = {
     y: -10,
     transition: { duration: 0.2 },
   },
-}
+};
 
 function GlassAnnouncement({
   className,
@@ -102,16 +109,16 @@ function GlassAnnouncement({
   pulse = true,
   ...props
 }: GlassAnnouncementProps) {
-  const [isDismissed, setIsDismissed] = React.useState(false)
+  const [isDismissed, setIsDismissed] = React.useState(false);
 
-  if (isDismissed) return null
+  if (isDismissed) return null;
 
   const handleDismiss = (e: React.MouseEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
-    setIsDismissed(true)
-    onDismiss?.()
-  }
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDismissed(true);
+    onDismiss?.();
+  };
 
   const content = (
     <motion.div
@@ -132,7 +139,7 @@ function GlassAnnouncement({
           variant === "purple" && "bg-purple-500/10",
           variant === "success" && "bg-emerald-500/10",
           variant === "warning" && "bg-amber-500/10",
-          variant === "default" && "bg-white/5",
+          variant === "default" && "bg-white/5"
         )}
       />
 
@@ -145,7 +152,7 @@ function GlassAnnouncement({
             variant === "purple" && "bg-purple-500/30 text-purple-200",
             variant === "success" && "bg-emerald-500/30 text-emerald-200",
             variant === "warning" && "bg-amber-500/30 text-amber-200",
-            variant === "default" && "bg-white/20 text-white",
+            variant === "default" && "bg-white/20 text-white"
           )}
         >
           {showSparkle && <Sparkles className="w-3 h-3" />}
@@ -186,33 +193,33 @@ function GlassAnnouncement({
         )}
       </div>
     </motion.div>
-  )
+  );
 
   if (href) {
     return (
       <Link href={href} className="inline-block">
         {content}
       </Link>
-    )
+    );
   }
 
-  return content
+  return content;
 }
 
 // Full-width banner variant
 export interface GlassAnnouncementBannerProps extends Omit<HTMLMotionProps<"div">, "children"> {
   /** The label/tag shown at the start */
-  label?: string
+  label?: string;
   /** Main announcement text */
-  children: React.ReactNode
+  children: React.ReactNode;
   /** Optional link */
-  href?: string
+  href?: string;
   /** Dismissible */
-  dismissible?: boolean
+  dismissible?: boolean;
   /** Callback when dismissed */
-  onDismiss?: () => void
+  onDismiss?: () => void;
   /** Background gradient colors */
-  gradient?: "cyan" | "purple" | "emerald" | "amber" | "rainbow"
+  gradient?: "cyan" | "purple" | "emerald" | "amber" | "rainbow";
 }
 
 function GlassAnnouncementBanner({
@@ -225,16 +232,16 @@ function GlassAnnouncementBanner({
   gradient = "cyan",
   ...props
 }: GlassAnnouncementBannerProps) {
-  const [isDismissed, setIsDismissed] = React.useState(false)
+  const [isDismissed, setIsDismissed] = React.useState(false);
 
-  if (isDismissed) return null
+  if (isDismissed) return null;
 
   const handleDismiss = (e: React.MouseEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
-    setIsDismissed(true)
-    onDismiss?.()
-  }
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDismissed(true);
+    onDismiss?.();
+  };
 
   const gradientStyles = {
     cyan: "from-cyan-500/20 via-blue-500/20 to-cyan-500/20",
@@ -242,7 +249,7 @@ function GlassAnnouncementBanner({
     emerald: "from-emerald-500/20 via-green-500/20 to-emerald-500/20",
     amber: "from-amber-500/20 via-orange-500/20 to-amber-500/20",
     rainbow: "from-cyan-500/20 via-purple-500/20 to-pink-500/20",
-  }
+  };
 
   const content = (
     <motion.div
@@ -252,7 +259,7 @@ function GlassAnnouncementBanner({
         gradientStyles[gradient],
         "border-b border-white/10",
         "backdrop-blur-xl",
-        className,
+        className
       )}
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -267,7 +274,7 @@ function GlassAnnouncementBanner({
             gradient === "purple" && "bg-purple-500/30 text-purple-200",
             gradient === "emerald" && "bg-emerald-500/30 text-emerald-200",
             gradient === "amber" && "bg-amber-500/30 text-amber-200",
-            gradient === "rainbow" && "bg-purple-500/30 text-purple-200",
+            gradient === "rainbow" && "bg-purple-500/30 text-purple-200"
           )}
         >
           <Sparkles className="w-3 h-3" />
@@ -276,7 +283,9 @@ function GlassAnnouncementBanner({
 
         <span className="text-white/90">{children}</span>
 
-        {href && <ArrowRight className="w-4 h-4 text-white/60 group-hover:text-white transition-colors" />}
+        {href && (
+          <ArrowRight className="w-4 h-4 text-white/60 group-hover:text-white transition-colors" />
+        )}
 
         {dismissible && (
           <button
@@ -289,17 +298,17 @@ function GlassAnnouncementBanner({
         )}
       </div>
     </motion.div>
-  )
+  );
 
   if (href) {
     return (
       <Link href={href} className="block group">
         {content}
       </Link>
-    )
+    );
   }
 
-  return content
+  return content;
 }
 
-export { GlassAnnouncement, GlassAnnouncementBanner }
+export { GlassAnnouncement, GlassAnnouncementBanner };
