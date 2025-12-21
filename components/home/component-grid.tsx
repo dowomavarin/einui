@@ -26,41 +26,38 @@ import {
 import { GlassBadge } from "@/registry/liquid-glass/glass-badge";
 
 const baseComponents = [
-  { title: "Cards", href: "/docs/components/cards", icon: Square },
-  { title: "Buttons", href: "/docs/components/buttons", icon: LayoutGrid },
-  { title: "Dialogs", href: "/docs/components/dialogs", icon: MessageSquare },
-  { title: "Inputs", href: "/docs/components/inputs", icon: TextCursorInput },
-  { title: "Tabs", href: "/docs/components/tabs", icon: Layers },
-  { title: "Badge", href: "/docs/components/badge", icon: Info },
-  { title: "Avatar", href: "/docs/components/avatar", icon: User },
-  { title: "Progress", href: "/docs/components/progress", icon: CheckCircle },
-  { title: "Switch", href: "/docs/components/switch", icon: ToggleLeft },
-  { title: "Slider", href: "/docs/components/slider", icon: Sliders },
+  { title: "Cards", href: "/docs/components/glass-card", icon: Square },
+  { title: "Buttons", href: "/docs/components/glass-button", icon: LayoutGrid },
+  { title: "Dialogs", href: "/docs/components/glass-dialog", icon: MessageSquare },
+  { title: "Inputs", href: "/docs/components/glass-input", icon: TextCursorInput },
+  { title: "Tabs", href: "/docs/components/glass-tabs", icon: Layers },
+  { title: "Badge", href: "/docs/components/glass-badge", icon: Info },
+  { title: "Avatar", href: "/docs/components/glass-avatar", icon: User },
+  { title: "Progress", href: "/docs/components/glass-progress", icon: CheckCircle },
+  { title: "Switch", href: "/docs/components/glass-switch", icon: ToggleLeft },
+  { title: "Slider", href: "/docs/components/glass-slider", icon: Sliders },
 ];
 
 const advancedComponents = [
   {
     title: "Command Palette",
-    href: "/docs/components/command-palette",
+    href: "/docs/components/glass-command-palette",
     icon: Command,
     isNew: true,
   },
-  { title: "Notifications", href: "/docs/components/notifications", icon: Bell, isNew: true },
-  { title: "Morph Card", href: "/docs/components/morph-card", icon: MousePointer, isNew: true },
-  { title: "Ripple", href: "/docs/components/ripple", icon: Droplets },
-  { title: "Timeline", href: "/docs/components/timeline", icon: Clock },
-  { title: "Gauge", href: "/docs/components/gauge", icon: Gauge },
-  { title: "Dock", href: "/docs/components/dock", icon: Dock },
-  { title: "Spotlight", href: "/docs/components/spotlight", icon: Sparkles },
+  { title: "Notifications", href: "/docs/components/glass-notifications", icon: Bell, isNew: true },
+  { title: "Morph Card", href: "/docs/components/glass-morph-card", icon: MousePointer, isNew: true },
+  { title: "Ripple", href: "/docs/components/glass-ripple", icon: Droplets },
+  { title: "Timeline", href: "/docs/components/glass-timeline", icon: Clock },
+  { title: "Gauge", href: "/docs/components/glass-gauge", icon: Gauge },
+  { title: "Dock", href: "/docs/components/glass-dock", icon: Dock },
 ];
 
 const widgetTypes = [
-  { title: "Calendar", href: "/docs/components/widgets/calendar", icon: Calendar },
-  { title: "Clock", href: "/docs/components/widgets/clock", icon: Clock },
-  { title: "Weather", href: "/docs/components/widgets/weather", icon: CloudSun },
-  { title: "Stocks", href: "/docs/components/widgets/stocks", icon: TrendingUp },
-  { title: "Sports", href: "/docs/components/widgets/sports", icon: Trophy },
-  { title: "Productivity", href: "/docs/components/widgets/productivity", icon: CheckCircle },
+  { title: "Calendar", href: "/docs/components/calendar-widget", icon: Calendar },
+  { title: "Clock", href: "/docs/components/clock-widget", icon: Clock },
+  { title: "Weather", href: "/docs/components/weather-widget", icon: CloudSun },
+  { title: "Stocks", href: "/docs/components/stocks-widget", icon: TrendingUp },
 ];
 
 export function ComponentGrid() {
@@ -96,7 +93,7 @@ export function ComponentGrid() {
                 <span className="text-white/70 text-sm">{component.title}</span>
                 {component.isNew && (
                   <GlassBadge
-                    variant="primary"
+                    glass-variant="primary"
                     size="sm"
                     className="absolute -top-1.5 -right-1.5 text-[10px] px-1.5 py-0"
                   >
