@@ -47,6 +47,9 @@ import {
   HardDrive,
   InfoIcon,
   AlertCircle,
+  UserPlus,
+  Mail,
+  BarChart3,
 } from "lucide-react";
 
 
@@ -114,6 +117,7 @@ export const headerNavItems = [
   { href: "/docs", label: "Docs", icon: BookOpen },
   { href: "/docs/components/glass-avatar", label: "Components", icon: LayoutGrid },
   { href: "/docs/components/weather-widget", label: "Widgets", icon: Sparkles, isNew: true },
+  { href: "/docs/blocks/signup", label: "Blocks", icon: PanelLeft, isNew: true },
 ];
 
 export function generateNavigation(): NavSection[] {
@@ -121,11 +125,11 @@ export function generateNavigation(): NavSection[] {
     {
       title: "Get Started",
       items: [
-        { title: "Introduction", href: "/docs", icon: <BookOpen className="h-4 w-4" /> },
-        { title: "Installation", href: "/docs/installation", icon: <Download className="h-4 w-4" /> },
-        { title: "Theming", href: "/docs/theming", icon: <Palette className="h-4 w-4" /> },
-        { title: "Dark Mode", href: "/docs/dark-mode", icon: <Moon className="h-4 w-4" /> },
-        { title: "CLI", href: "/docs/cli", icon: <Terminal className="h-4 w-4" /> },
+        { title: "Introduction", href: "/docs", icon: <BookOpen className="size-4" /> },
+        { title: "Installation", href: "/docs/installation", icon: <Download className="size-4" /> },
+        { title: "Theming", href: "/docs/theming", icon: <Palette className="size-4" /> },
+        { title: "Dark Mode", href: "/docs/dark-mode", icon: <Moon className="size-4" /> },
+        { title: "CLI", href: "/docs/cli", icon: <Terminal className="size-4" /> },
       ],
     },
   ]
@@ -147,7 +151,7 @@ export function generateNavigation(): NavSection[] {
         return {
           title: c.title,
           href: `/docs/components/${c.slug}`,
-          icon: <IconComponent className="h-4 w-4" />,
+          icon: <IconComponent className="size-4" />,
         }
       }),
     },
@@ -158,7 +162,7 @@ export function generateNavigation(): NavSection[] {
         return {
           title: c.title,
           href: `/docs/components/${c.slug}`,
-          icon: <IconComponent className="h-4 w-4" />,
+          icon: <IconComponent className="size-4" />,
           isNew: true,
         }
       }),
@@ -170,7 +174,7 @@ export function generateNavigation(): NavSection[] {
         return {
           title: c.title,
           href: `/docs/components/${c.slug}`,
-          icon: <IconComponent className="h-4 w-4" />,
+          icon: <IconComponent className="size-4" />,
           isNew: true,
         }
       }),
@@ -182,7 +186,7 @@ export function generateNavigation(): NavSection[] {
         return {
           title: c.title,
           href: `/docs/components/${c.slug}`,
-          icon: <IconComponent className="h-4 w-4" />,
+          icon: <IconComponent className="size-4" />,
           isNew: true,
         }
       }),
@@ -194,7 +198,7 @@ export function generateNavigation(): NavSection[] {
         return {
           title: c.title,
           href: `/docs/components/${c.slug}`,
-          icon: <IconComponent className="h-4 w-4" />,
+          icon: <IconComponent className="size-4" />,
           isNew: true,
         }
       }),
@@ -206,7 +210,7 @@ export function generateNavigation(): NavSection[] {
         return {
           title: c.title,
           href: `/docs/components/${c.slug}`,
-          icon: <IconComponent className="h-4 w-4" />,
+          icon: <IconComponent className="size-4" />,
           isNew: true,
         }
       }),
@@ -220,12 +224,18 @@ export function generateNavigation(): NavSection[] {
     {
       title: "Registry",
       items: [
-        { title: "Overview", href: "/docs/registry", icon: <Package className="h-4 w-4" /> }
+        { title: "Overview", href: "/docs/registry", icon: <Package className="size-4" /> }
       ],
     },
     {
       title: "Blocks",
-      items: [{ title: "Admin Panel", href: "/docs/blocks/admin", icon: <PanelLeft className="h-4 w-4" /> }],
+      items: [
+        { title: "Sign Up Page", href: "/docs/blocks/signup", icon: <UserPlus className="size-4" />, isNew: true },
+        { title: "Login Page", href: "/docs/blocks/login", icon: <User className="size-4" />, isNew: true },
+        { title: "Forgot Password", href: "/docs/blocks/forgot-password", icon: <Mail className="size-4" />, isNew: true },
+        { title: "Pricing Page", href: "/docs/blocks/pricing", icon: <BarChart3 className="size-4" />, isNew: true },
+        { title: "Admin Panel", href: "/docs/blocks/admin", icon: <PanelLeft className="size-4" /> },
+      ],
     },
   ]
 

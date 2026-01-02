@@ -46,9 +46,9 @@ export default function AdminBlockPage() {
   const [searchQuery, setSearchQuery] = useState("")
 
   return (
-    <div className="container mx-auto px-4 py-8 lg:py-12 max-w-6xl">
+    <div className="w-full space-y-6">
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((stat) => (
           <GlassCard key={stat.title}>
             <GlassCardContent className="pt-6">
@@ -77,7 +77,7 @@ export default function AdminBlockPage() {
       </div>
 
       {/* Main Content Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Users Table */}
         <div className="lg:col-span-2">
           <GlassCard>

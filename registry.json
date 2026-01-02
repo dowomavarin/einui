@@ -585,6 +585,93 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "forgot-password-page",
+      "title": "Forgot Password Page",
+      "type": "registry:block",
+      "description": "A forgot password recovery page with email submission and confirmation state, including helpful tips and support contact.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://ui.eindev.ir/r/glass-card.json",
+        "https://ui.eindev.ir/r/glass-button.json",
+        "https://ui.eindev.ir/r/glass-input.json"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/auth/forgot-password-page.tsx",
+          "type": "registry:block",
+          "target": "app/auth/forgot-password/page.tsx"
+        }
+      ]
+    },
+    {
+      "name": "login-page",
+      "title": "Login Page",
+      "type": "registry:block",
+      "description": "A complete login page with email and password authentication, password visibility toggle, remember me option, and social login buttons.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://ui.eindev.ir/r/glass-card.json",
+        "https://ui.eindev.ir/r/glass-button.json",
+        "https://ui.eindev.ir/r/glass-input.json",
+        "https://ui.eindev.ir/r/glass-checkbox.json"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/auth/login-page.tsx",
+          "type": "registry:block",
+          "target": "app/auth/login/page.tsx"
+        }
+      ]
+    },
+    {
+      "name": "signup-page",
+      "title": "Sign Up Page",
+      "type": "registry:block",
+      "description": "A complete sign up page with multi-step validation, password strength indicator, confirm password matching, and terms agreement checkbox.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://ui.eindev.ir/r/glass-card.json",
+        "https://ui.eindev.ir/r/glass-button.json",
+        "https://ui.eindev.ir/r/glass-input.json",
+        "https://ui.eindev.ir/r/glass-checkbox.json"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/auth/signup-page.tsx",
+          "type": "registry:block",
+          "target": "app/auth/signup/page.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pricing-page",
+      "title": "Pricing Page",
+      "type": "registry:block",
+      "description": "A modern pricing page with multiple plan tiers, billing toggle, feature comparison, FAQ section, and call-to-action buttons.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://ui.eindev.ir/r/glass-card.json",
+        "https://ui.eindev.ir/r/glass-button.json",
+        "https://ui.eindev.ir/r/glass-badge.json",
+        "https://ui.eindev.ir/r/glass-switch.json"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/pricing/page.tsx",
+          "type": "registry:block",
+          "target": "app/pricing/page.tsx"
+        }
+      ]
     }
   ]
 }
