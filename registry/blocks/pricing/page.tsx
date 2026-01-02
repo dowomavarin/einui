@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Sparkles, Zap, Building2, HelpCircle, ArrowRight } from "lucide-react";
+import { Check, Sparkles, Zap, Building2, ArrowRight } from "lucide-react";
 import {
   GlassCard,
   GlassCardContent,
@@ -67,7 +67,7 @@ export default function PricingBlockPage() {
   const [isYearly, setIsYearly] = useState(false);
 
   return (
-    <div className="min-full py-4 flex items-center justify-center bg-linear-to-br from-slate-950 via-purple-900 to-slate-950 px-3">
+    <div className="min-h-full py-4 flex items-center justify-center bg-linear-to-br from-slate-950 via-purple-900 to-slate-950 px-3">
       <div className="w-full max-w-4xl mx-auto space-y-12">
         {/* Header */}
         <div className="text-center space-y-4">
@@ -100,12 +100,12 @@ export default function PricingBlockPage() {
 
         {/* Pricing Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-          {plans.map((plan, index) => {
+          {plans.map((plan) => {
             const Icon = plan.icon;
             const price = isYearly ? plan.price.yearly : plan.price.monthly;
 
             return (
-              <div key={index} className={`relative ${plan.highlighted ? "md:-mt-4 md:mb-4" : ""}`}>
+              <div key={plan.name} className={`relative ${plan.highlighted ? "md:-mt-4 md:mb-4" : ""}`}>
                 {plan.highlighted && (
                   <div className="absolute w-full -top-3 left-3/4 -translate-x-1/2 z-10">
                     <GlassBadge variant="success" className="shadow-lg shadow-green-500/20">

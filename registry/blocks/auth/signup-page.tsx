@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useMemo, useState } from "react"
 import { Eye, EyeOff, UserPlus, Check } from "lucide-react"
 import { GlassCard, GlassCardContent, GlassCardDescription, GlassCardHeader, GlassCardTitle } from "@/registry/liquid-glass/glass-card"
 import { GlassInput } from "@/registry/liquid-glass/glass-input"
@@ -35,7 +35,7 @@ export default function SignupPageBlock() {
     hasSpecial: /[!@#$%^&*(),.?":{}|<>]/.test(pwd),
   })
 
-  const validation = validatePassword(password)
+  const validation = useMemo(() => validatePassword(password), [password])
   const isPasswordValid = Object.values(validation).every(Boolean)
   const passwordsMatch = password === confirmPassword && password.length > 0
 

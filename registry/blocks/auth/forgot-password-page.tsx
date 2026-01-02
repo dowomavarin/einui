@@ -148,6 +148,7 @@ export default function ForgotPasswordPageBlock() {
                   variant="primary"
                   className="flex-1"
                   disabled={isLoading}
+                  onClick={handleSubmit}
                 >
                   {isLoading ? (
                     <div className="h-4 w-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />

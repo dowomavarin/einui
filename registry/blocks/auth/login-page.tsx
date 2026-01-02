@@ -5,14 +5,12 @@ import { Eye, EyeOff, LogIn } from "lucide-react"
 import { GlassCard, GlassCardContent, GlassCardDescription, GlassCardHeader, GlassCardTitle } from "@/registry/liquid-glass/glass-card"
 import { GlassInput } from "@/registry/liquid-glass/glass-input"
 import { GlassButton } from "@/registry/liquid-glass/glass-button"
-import { GlassCheckbox } from "@/registry/liquid-glass/glass-checkbox"
 import { Label } from "@/components/ui/label"
 
 export default function LoginPageBlock() {
   const [showPassword, setShowPassword] = useState(false)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [rememberMe, setRememberMe] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -21,7 +19,7 @@ export default function LoginPageBlock() {
     // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 2000))
     setIsLoading(false)
-    console.log({ email, password, rememberMe })
+    alert(`Logged in with email: ${email}`)
   }
 
   return (
