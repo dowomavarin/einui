@@ -45,19 +45,22 @@ export function CLIInstall({ componentName }: CLIInstallProps) {
   }, [command])
 
   return (
-    <div className="mb-8">
-      <div className="flex items-center gap-2 mb-3">
-        <Terminal className="h-4 w-4 text-cyan-400" />
-        <span className="text-sm font-medium text-white/80">Installation</span>
+    <section className="mb-12 rounded-2xl border border-white/10 bg-[#101923]/80 p-4 sm:p-5">
+      <div className="mb-3 flex items-center justify-between gap-4">
+        <div className="flex items-center gap-2">
+          <Terminal className="h-4 w-4 text-cyan-400" />
+          <span className="text-sm font-medium text-white">Add this component</span>
+        </div>
+        <span className="text-xs text-white/40">shadcn CLI</span>
       </div>
       <div className="relative group">
-        <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-black/40 backdrop-blur-sm px-4 py-3 font-mono text-sm text-white/70 overflow-x-auto">
+        <div className="flex items-center gap-3 overflow-x-auto rounded-xl border border-white/10 bg-black/30 px-4 py-3 font-mono text-sm text-white/70">
           <span className="text-cyan-400 select-none">$</span>
           <code className="flex-1">{command}</code>
           <button
             type="button"
             onClick={copyToClipboard}
-            className="shrink-0 p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-white/60 hover:text-white transition-all"
+            className="shrink-0 rounded-lg bg-white/5 p-2 text-white/60 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/70"
             aria-label="Copy install command"
             aria-pressed={copied}
           >
@@ -65,6 +68,6 @@ export function CLIInstall({ componentName }: CLIInstallProps) {
           </button>
         </div>
       </div>
-    </div>
+    </section>
   )
 }

@@ -4,20 +4,22 @@ import type React from "react"
 
 import { GlassTabs, GlassTabsList, GlassTabsTrigger, GlassTabsContent } from "@/registry/liquid-glass/glass-tabs"
 import { CodeBlock } from "./code-block"
+import { ComponentStage } from "./component-stage"
 
 interface ComponentPreviewProps {
   title: string
   description: string
   preview: React.ReactNode
   code: string
+  stageSize?: "compact" | "default" | "wide" | "tall"
 }
 
-export function ComponentPreview({ title, description, preview, code }: ComponentPreviewProps) {
+export function ComponentPreview({ title, description, preview, code, stageSize = "default" }: ComponentPreviewProps) {
   return (
-    <div className="mb-12">
-      <div className="mb-4">
-        <h3 className="text-xl font-semibold text-white">{title}</h3>
-        <p className="mt-1 text-white/60">{description}</p>
+    <section className="mb-16 scroll-mt-24">
+      <div className="mb-5">
+        <h2 className="text-xl font-semibold tracking-tight text-white">{title}</h2>
+        <p className="mt-2 max-w-2xl text-sm leading-6 text-white/60">{description}</p>
       </div>
 
       <GlassTabs defaultValue="preview" className="w-full">
@@ -27,11 +29,8 @@ export function ComponentPreview({ title, description, preview, code }: Componen
         </GlassTabsList>
 
         <GlassTabsContent value="preview">
-          <div className="relative mt-4">
-            <div className="absolute -inset-0.5 rounded-xl bg-linear-to-r from-cyan-500/10 via-blue-500/10 to-purple-500/10 blur-sm" />
-            <div className="relative rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm p-8 min-h-50 flex items-center justify-center">
-              {preview}
-            </div>
+          <div className="mt-4">
+            <ComponentStage size={stageSize}>{preview}</ComponentStage>
           </div>
         </GlassTabsContent>
 
@@ -41,6 +40,6 @@ export function ComponentPreview({ title, description, preview, code }: Componen
           </div>
         </GlassTabsContent>
       </GlassTabs>
-    </div>
+    </section>
   )
 }

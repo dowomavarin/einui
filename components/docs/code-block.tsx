@@ -40,11 +40,13 @@ export function CodeBlock({
   const downloadAsFile = () => {
     const element = document.createElement("a")
     const file = new Blob([code], { type: "text/plain" })
-    element.href = URL.createObjectURL(file)
+    const objectUrl = URL.createObjectURL(file)
+    element.href = objectUrl
     element.download = filename || `code.${getFileExtension(language)}`
     document.body.appendChild(element)
     element.click()
     document.body.removeChild(element)
+    URL.revokeObjectURL(objectUrl)
   }
 
   const getFileExtension = (lang: string) => {
