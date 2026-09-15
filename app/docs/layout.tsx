@@ -5,14 +5,18 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 
 export default function DocsLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen bg-slate-900 relative overflow-hidden py-12 lg:py-16">
+    <div className="min-h-screen bg-[#070B12] relative overflow-hidden py-12 lg:py-16">
       <SidebarProvider defaultOpen={true}>
-      <div className="absolute inset-0 bg-linear-to-br from-slate-900 via-blue-950 to-slate-900" />
+      <div className="absolute inset-0 bg-linear-to-br from-[#070B12] via-[#0B1420] to-[#070B12]" />
 
-      {/* Animated linear orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-purple-500/30 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" />
+      <div
+        className="pointer-events-none absolute inset-0 opacity-40"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 70% 12%, rgba(103,232,249,.10), transparent 28rem), radial-gradient(circle at 30% 85%, rgba(196,181,253,.08), transparent 24rem)",
+        }}
+        aria-hidden="true"
+      />
         <AppSidebar />
         <MobileNav />
 
