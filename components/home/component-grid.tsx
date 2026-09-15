@@ -17,109 +17,104 @@ import {
   Clock,
   Gauge,
   Dock,
-  Calendar,
-  TrendingUp,
-  CloudSun,
-  Sparkles
+  Sparkles,
+  Edit,
+  Zap,
+  Eye,
 } from "lucide-react";
 import { GlassBadge } from "@/registry/liquid-glass/glass-badge";
 
-const baseComponents = [
-  { title: "Cards", href: "/docs/components/glass-card", icon: Square },
-  { title: "Buttons", href: "/docs/components/glass-button", icon: LayoutGrid },
-  { title: "Dialogs", href: "/docs/components/glass-dialog", icon: MessageSquare },
-  { title: "Inputs", href: "/docs/components/glass-input", icon: TextCursorInput },
-  { title: "Tabs", href: "/docs/components/glass-tabs", icon: Layers },
-  { title: "Badge", href: "/docs/components/glass-badge", icon: Info },
-  { title: "Avatar", href: "/docs/components/glass-avatar", icon: User },
-  { title: "Progress", href: "/docs/components/glass-progress", icon: CheckCircle },
-  { title: "Switch", href: "/docs/components/glass-switch", icon: ToggleLeft },
-  { title: "Slider", href: "/docs/components/glass-slider", icon: Sliders },
-];
-
-const advancedComponents = [
+const componentsByUseCase = [
   {
-    title: "Command Palette",
-    href: "/docs/components/glass-command-palette",
-    icon: Command
+    category: "Forms & Input",
+    description: "Collect user data with style",
+    icon: Edit,
+    components: [
+      { title: "Inputs", href: "/docs/components/glass-input", icon: TextCursorInput },
+      { title: "Textarea", href: "/docs/components/glass-textarea", icon: Edit },
+      { title: "Checkbox", href: "/docs/components/glass-checkbox", icon: CheckCircle },
+      { title: "Switch", href: "/docs/components/glass-switch", icon: ToggleLeft },
+      { title: "Slider", href: "/docs/components/glass-slider", icon: Sliders },
+      { title: "Select", href: "/docs/components/glass-select", icon: Layers },
+    ],
   },
-  { title: "Notifications", href: "/docs/components/glass-notification", icon: Bell },
-  { title: "Morph Card", href: "/docs/components/glass-morph-card", icon: MousePointer },
-  { title: "Orb", href: "/docs/components/glass-orb", icon: Sparkles, isNew: true },
-  { title: "Waveform", href: "/docs/components/glass-waveform", icon: Gauge, isNew: true },
-  { title: "Ripple", href: "/docs/components/glass-ripple", icon: Droplets },
-  { title: "Timeline", href: "/docs/components/glass-timeline", icon: Clock },
-  { title: "Gauge", href: "/docs/components/glass-gauge", icon: Gauge },
-  { title: "Dock", href: "/docs/components/glass-dock", icon: Dock },
-];
-
-const widgetTypes = [
-  { title: "Calendar", href: "/docs/components/calendar-widget", icon: Calendar },
-  { title: "Clock", href: "/docs/components/clock-widget", icon: Clock },
-  { title: "Weather", href: "/docs/components/weather-widget", icon: CloudSun },
-  { title: "Stocks", href: "/docs/components/stock-widget", icon: TrendingUp },
+  {
+    category: "Feedback & Status",
+    description: "Show progress and communicate states",
+    icon: Eye,
+    components: [
+      { title: "Progress", href: "/docs/components/glass-progress", icon: CheckCircle },
+      { title: "Badge", href: "/docs/components/glass-badge", icon: Info },
+      { title: "Notifications", href: "/docs/components/glass-notification", icon: Bell },
+      { title: "Alert Dialog", href: "/docs/components/glass-alert-dialog", icon: MessageSquare },
+      { title: "Tabs", href: "/docs/components/glass-tabs", icon: Layers },
+    ],
+  },
+  {
+    category: "Layout & Structure",
+    description: "Organize and present content",
+    icon: LayoutGrid,
+    components: [
+      { title: "Cards", href: "/docs/components/glass-card", icon: Square },
+      { title: "Buttons", href: "/docs/components/glass-button", icon: LayoutGrid },
+      { title: "Avatar", href: "/docs/components/glass-avatar", icon: User },
+      { title: "Dock", href: "/docs/components/glass-dock", icon: Dock },
+      { title: "Timeline", href: "/docs/components/glass-timeline", icon: Clock },
+      { title: "Popover", href: "/docs/components/glass-popover", icon: MessageSquare },
+    ],
+  },
+  {
+    category: "Advanced & Interactive",
+    description: "Rich interactions and creative moments",
+    icon: Zap,
+    components: [
+      { title: "Command Palette", href: "/docs/components/glass-command-palette", icon: Command },
+      { title: "Morph Card", href: "/docs/components/glass-morph-card", icon: MousePointer },
+      { title: "Orb", href: "/docs/components/glass-orb", icon: Sparkles, isNew: true },
+      { title: "Waveform", href: "/docs/components/glass-waveform", icon: Gauge, isNew: true },
+      { title: "Ripple", href: "/docs/components/glass-ripple", icon: Droplets },
+      { title: "Gauge", href: "/docs/components/glass-gauge", icon: Gauge },
+    ],
+  },
 ];
 
 export function ComponentGrid() {
   return (
-    <div className="max-w-5xl mx-auto space-y-8">
-      {/* Base Components */}
-      <div>
-        <h3 className="text-sm font-medium text-white/40 uppercase tracking-wider mb-4">
-          Base Components
-        </h3>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
-          {baseComponents.map((component) => (
-            <Link key={component.href} href={component.href} className="group">
-              <div className="p-3 rounded-xl bg-white/2 border border-white/5 hover:bg-white/5 hover:border-white/10 transition-all text-center">
-                <component.icon className="w-4 h-4 text-white/40 mx-auto mb-1.5 group-hover:text-cyan-400 transition-colors" />
-                <span className="text-white/70 text-sm">{component.title}</span>
+    <div className="max-w-6xl mx-auto space-y-16">
+      {componentsByUseCase.map((section) => (
+        <div key={section.category}>
+          <div className="mb-8 flex items-start justify-between">
+            <div>
+              <div className="mb-2 flex items-center gap-3">
+                <div className="w-fit rounded-lg bg-linear-to-br from-cyan-500/20 to-purple-500/20 p-2">
+                  <section.icon className="w-5 h-5 text-cyan-300" />
+                </div>
+                <h3 className="text-lg font-semibold text-white">{section.category}</h3>
               </div>
-            </Link>
-          ))}
+              <p className="text-sm text-white/40">{section.description}</p>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+            {section.components.map((component) => (
+              <Link key={component.href} href={component.href} className="group">
+                <div className="rounded-xl border border-white/7 bg-white/[0.025] p-4 text-center transition-all hover:border-cyan-300/20 hover:bg-white/[0.045]">
+                  <component.icon className="w-5 h-5 mx-auto mb-2.5 text-white/50 group-hover:text-cyan-300 transition-colors" />
+                  <span className="text-sm text-white/70 group-hover:text-white/90">{component.title}</span>
+                  {component.isNew && (
+                    <GlassBadge
+                      variant="primary"
+                      size="sm"
+                      className="mt-2 text-[10px] px-1.5 py-0 block mx-auto w-fit"
+                    >
+                      New
+                    </GlassBadge>
+                  )}
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
-      </div>
-
-      {/* Advanced Components */}
-      <div>
-        <h3 className="text-sm font-medium text-white/40 uppercase tracking-wider mb-4">
-          Advanced
-        </h3>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
-          {advancedComponents.map((component) => (
-            <Link key={component.href} href={component.href} className="group">
-              <div className="p-3 rounded-xl bg-white/2 border border-white/5 hover:bg-white/5 hover:border-white/10 transition-all text-center relative">
-                <component.icon className="w-4 h-4 text-white/40 mx-auto mb-1.5 group-hover:text-purple-400 transition-colors" />
-                <span className="text-white/70 text-sm">{component.title}</span>
-                {component.isNew && (
-                  <GlassBadge
-                    variant="primary"
-                    size="sm"
-                    className="absolute -top-1.5 -right-1.5 text-[10px] px-1.5 py-0"
-                  >
-                    New
-                  </GlassBadge>
-                )}
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
-
-      {/* Widgets */}
-      <div>
-        <h3 className="text-sm font-medium text-white/40 uppercase tracking-wider mb-4">Widgets</h3>
-        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-2">
-          {widgetTypes.map((widget) => (
-            <Link key={widget.href} href={widget.href} className="group">
-              <div className="p-3 rounded-xl bg-linear-to-br from-cyan-500/5 to-purple-500/5 border border-white/5 hover:border-cyan-500/20 transition-all text-center">
-                <widget.icon className="w-4 h-4 text-white/40 mx-auto mb-1.5 group-hover:text-cyan-400 transition-colors" />
-                <span className="text-white/70 text-sm">{widget.title}</span>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
+      ))}
     </div>
   );
 }
