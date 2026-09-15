@@ -84,6 +84,9 @@ export default function CommandPalettePage() {
       <PageHeader
         title={getComponentHeading(componentTitle)}
         description={getComponentIntro(componentTitle, componentDescription)}
+        category="innovative"
+        registryName="glass-command-palette"
+        exampleCount={3}
       />
 
       <CLIInstall componentName="glass-command-palette" />

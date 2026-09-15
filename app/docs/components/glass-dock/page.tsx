@@ -62,6 +62,9 @@ export default function DockPage() {
       <PageHeader
         title={getComponentHeading(componentTitle)}
         description={getComponentIntro(componentTitle, componentDescription)}
+        category="innovative"
+        registryName="glass-dock"
+        exampleCount={4}
       />
 
       <CLIInstall componentName="glass-dock" />

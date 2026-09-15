@@ -146,6 +146,9 @@ export interface ComponentConfig {
   | "time"
   | "widgets"
   | "data";
+  usage?: string;
+  dependencies?: string[];
+  relatedComponents?: string[];
   examples: ComponentExample[];
 }
 
@@ -2696,6 +2699,35 @@ export const componentRegistry: Record<string, ComponentConfig> = {
   },
 };
 
+const componentMetadata: Record<
+  string,
+  Pick<ComponentConfig, "usage" | "dependencies" | "relatedComponents">
+> = {
+  "glass-button": {
+    usage: "Use buttons for actions that change state, submit work, or move the user forward.",
+    dependencies: ["class-variance-authority", "lucide-react"],
+    relatedComponents: ["glass-card", "glass-input"],
+  },
+  "glass-card": {
+    usage: "Use cards to give related content a clear surface without hiding the page hierarchy.",
+    relatedComponents: ["glass-button", "glass-badge"],
+  },
+  "glass-input": {
+    usage: "Use inputs for short, single-line values such as names, search terms, and identifiers.",
+    relatedComponents: ["glass-textarea", "glass-select", "glass-button"],
+  },
+  "glass-command-palette": {
+    usage: "Use a command palette when frequent actions or destinations deserve keyboard-first access.",
+    dependencies: ["lucide-react"],
+    relatedComponents: ["glass-dialog", "glass-input"],
+  },
+  "glass-orb": {
+    usage: "Use the orb as a focused ambient status or activity signal, not as a background decoration.",
+    dependencies: ["framer-motion"],
+    relatedComponents: ["glass-waveform", "glass-gauge"],
+  },
+};
+
 // Get all component slugs for generateStaticParams
 export function getAllComponentSlugs(): string[] {
   return Object.keys(componentRegistry);
@@ -2703,5 +2735,8 @@ export function getAllComponentSlugs(): string[] {
 
 // Get component config by slug
 export function getComponentBySlug(slug: string): ComponentConfig | undefined {
-  return componentRegistry[slug];
+  const component = componentRegistry[slug];
+  return component
+    ? { ...component, ...componentMetadata[slug] }
+    : undefined;
 }

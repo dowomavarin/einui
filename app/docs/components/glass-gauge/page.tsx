@@ -34,6 +34,9 @@ export default function GaugePage() {
       <PageHeader
         title={getComponentHeading(componentTitle)}
         description={getComponentIntro(componentTitle, componentDescription)}
+        category="innovative"
+        registryName="glass-gauge"
+        exampleCount={3}
       />
 
       <CLIInstall componentName="glass-gauge" />
