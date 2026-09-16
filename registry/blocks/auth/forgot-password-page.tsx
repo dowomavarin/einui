@@ -21,6 +21,12 @@ export default function ForgotPasswordPageBlock() {
     setIsSubmitted(true)
   }
 
+  const handleResend = async () => {
+    setIsLoading(true)
+    await new Promise((resolve) => setTimeout(resolve, 1200))
+    setIsLoading(false)
+  }
+
   const handleBack = () => {
     setIsSubmitted(false)
     setEmail("")
@@ -148,7 +154,7 @@ export default function ForgotPasswordPageBlock() {
                   variant="primary"
                   className="flex-1"
                   disabled={isLoading}
-                  onClick={handleSubmit}
+                  onClick={handleResend}
                 >
                   {isLoading ? (
                     <div className="h-4 w-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />
@@ -161,7 +167,7 @@ export default function ForgotPasswordPageBlock() {
               {/* Contact Support */}
               <p className="text-center text-xs text-white/50 pt-4 border-t border-white/10">
                 Still need help?{" "}
-                <a href="#" className="text-cyan-400 hover:text-cyan-300 transition-colors">
+                <a href="mailto:support@ein.dev" className="text-cyan-400 hover:text-cyan-300 transition-colors">
                   Contact support
                 </a>
               </p>

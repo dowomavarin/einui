@@ -132,6 +132,7 @@ export default function SignupPageBlock() {
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white/60 transition-colors"
+                  aria-label={showPassword ? "Hide password" : "Show password"}
                 >
                   {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                 </button>
@@ -182,6 +183,7 @@ export default function SignupPageBlock() {
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white/60 transition-colors"
+                  aria-label={showConfirmPassword ? "Hide password confirmation" : "Show password confirmation"}
                 >
                   {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                 </button>
@@ -205,13 +207,13 @@ export default function SignupPageBlock() {
               <Label htmlFor="terms" className="text-white/70 cursor-pointer text-sm leading-relaxed font-normal flex-1 flex flex-wrap gap-x-1 gap-y-0.5">
                 <span className="whitespace-nowrap">
                   I agree to the{" "}
-                  <a href="#" className="text-cyan-400 hover:text-cyan-300 transition-colors">
+                  <a href="/terms" className="text-cyan-400 hover:text-cyan-300 transition-colors">
                     Terms of Service
                   </a>
                 </span>
                 <span className="whitespace-nowrap">
                   and{" "}
-                  <a href="#" className="text-cyan-400 hover:text-cyan-300 transition-colors">
+                    <a href="/privacy" className="text-cyan-400 hover:text-cyan-300 transition-colors">
                     Privacy Policy
                   </a>
                 </span>
@@ -241,7 +243,7 @@ export default function SignupPageBlock() {
             {/* Sign In Link */}
             <p className="text-center text-sm text-white/60">
               Already have an account?{" "}
-              <a href="#" className="text-cyan-400 hover:text-cyan-300 transition-colors font-medium">
+              <a href="/docs/blocks/login" className="text-cyan-400 hover:text-cyan-300 transition-colors font-medium">
                 Sign in
               </a>
             </p>

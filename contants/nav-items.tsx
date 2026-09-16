@@ -1,4 +1,5 @@
 import { componentRegistry } from "@/lib/docs/component-registry";
+import { blockItems } from "@/lib/docs/docs-content";
 import {
   BookOpen,
   Download,
@@ -101,6 +102,14 @@ const componentIcons: Record<string, LucideIcon> = {
   "storage-widget": HardDrive,
   "stats-widget": TrendingUp,
   "stock-widget": Gauge,
+}
+
+const blockIcons: Record<string, LucideIcon> = {
+  "login-page": User,
+  "signup-page": UserPlus,
+  "forgot-password-page": Mail,
+  "pricing-page": BarChart3,
+  "admin-panel": PanelLeft,
 }
 
 interface NavItem {
@@ -233,13 +242,15 @@ export function generateNavigation(): NavSection[] {
     },
     {
       title: "Blocks",
-      items: [
-        { title: "Sign Up Page", href: "/docs/blocks/signup", icon: <UserPlus className="size-4" />, isNew: false },
-        { title: "Login Page", href: "/docs/blocks/login", icon: <User className="size-4" />, isNew: false },
-        { title: "Forgot Password", href: "/docs/blocks/forgot-password", icon: <Mail className="size-4" />, isNew: false },
-        { title: "Pricing Page", href: "/docs/blocks/pricing", icon: <BarChart3 className="size-4" />, isNew: false },
-        { title: "Admin Panel", href: "/docs/blocks/admin", icon: <PanelLeft className="size-4" /> },
-      ],
+      items: blockItems.map((block) => {
+        const IconComponent = blockIcons[block.name] || PanelLeft
+        return {
+          title: block.title,
+          href: block.route,
+          icon: <IconComponent className="size-4" />,
+          isNew: false,
+        }
+      }),
     },
   ]
 

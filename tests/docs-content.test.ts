@@ -1,4 +1,5 @@
 import {
+  blockItems,
   getInstallCommand,
   getRegistryUrl,
   installableComponents,
@@ -18,5 +19,17 @@ describe("documentation content", () => {
     expect(installableComponents.length).toBeGreaterThan(0);
     expect(installableComponents.every((item) => item.command.includes("@einui/"))).toBe(true);
     expect(installableComponents.some((item) => item.name === "glass-card")).toBe(true);
+  });
+
+  it("keeps every published block route backed by registry metadata", () => {
+    expect(blockItems).toHaveLength(5);
+    expect(blockItems.map((item) => item.name)).toEqual([
+      "login-page",
+      "signup-page",
+      "forgot-password-page",
+      "pricing-page",
+      "admin-panel",
+    ]);
+    expect(blockItems.every((item) => item.route.startsWith("/docs/blocks/"))).toBe(true);
   });
 });

@@ -12,18 +12,18 @@ export default function LoginPageBlock() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  const [status, setStatus] = useState("")
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
-    // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 2000))
     setIsLoading(false)
-    alert(`Logged in with email: ${email}`)
+    setStatus(`Demo sign-in submitted for ${email}. Connect this form to your authentication endpoint.`)
   }
 
   return (
-    <div className="min-full py-4 flex items-center justify-center bg-linear-to-br from-slate-950 via-purple-900 to-slate-950 px-4">
+    <div className="min-h-full py-4 flex items-center justify-center bg-linear-to-br from-slate-950 via-purple-900 to-slate-950 px-4">
       <GlassCard className="w-full max-w-md">
         <GlassCardHeader className="space-y-2 text-center">
           <div className="flex justify-center mb-2">
@@ -59,7 +59,7 @@ export default function LoginPageBlock() {
                 <Label htmlFor="password" className="text-white/80">
                   Password
                 </Label>
-                <a href="#" className="text-xs text-cyan-400 hover:text-cyan-300 transition-colors">
+                <a href="/docs/blocks/forgot-password" className="text-xs text-cyan-400 hover:text-cyan-300 transition-colors">
                   Forgot password?
                 </a>
               </div>
@@ -77,6 +77,7 @@ export default function LoginPageBlock() {
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white/60 transition-colors"
+                  aria-label={showPassword ? "Hide password" : "Show password"}
                 >
                   {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                 </button>
@@ -96,6 +97,7 @@ export default function LoginPageBlock() {
                 </>
               )}
             </GlassButton>
+            {status && <p className="text-center text-xs leading-5 text-cyan-200" role="status">{status}</p>}
 
             {/* Divider */}
             <div className="relative py-2">
@@ -141,7 +143,7 @@ export default function LoginPageBlock() {
             {/* Sign Up Link */}
             <p className="text-center text-sm text-white/60">
               Don&apos;t have an account?{" "}
-              <a href="#" className="text-cyan-400 hover:text-cyan-300 transition-colors font-medium">
+              <a href="/docs/blocks/signup" className="text-cyan-400 hover:text-cyan-300 transition-colors font-medium">
                 Sign up
               </a>
             </p>

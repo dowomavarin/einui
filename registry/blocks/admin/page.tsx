@@ -44,6 +44,10 @@ const users = [
 
 export default function AdminBlockPage() {
   const [searchQuery, setSearchQuery] = useState("")
+  const [notifications, setNotifications] = useState({ email: true, push: false, weekly: true })
+  const filteredUsers = users.filter((user) =>
+    `${user.name} ${user.email} ${user.role}`.toLowerCase().includes(searchQuery.toLowerCase()),
+  )
 
   return (
     <div className="w-full space-y-6">
@@ -93,6 +97,7 @@ export default function AdminBlockPage() {
                     <GlassInput
                       className="pl-9 w-full sm:w-48"
                       placeholder="Search..."
+                      aria-label="Search users"
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                     />
@@ -141,7 +146,7 @@ export default function AdminBlockPage() {
                     </tr>
                   </thead>
                   <tbody>
-                    {users.map((user) => (
+                    {filteredUsers.map((user) => (
                       <tr key={user.email} className="border-b border-white/5 hover:bg-white/5 transition-colors">
                         <td className="py-3 px-2">
                           <div className="flex items-center gap-3">
@@ -169,7 +174,8 @@ export default function AdminBlockPage() {
                         </td>
                         <td className="py-3 px-2">
                           <GlassButton variant="ghost" size="icon" className="h-8 w-8">
-                            <MoreHorizontal className="h-4 w-4" />
+                            <MoreHorizontal className="h-4 w-4" aria-hidden="true" />
+                            <span className="sr-only">Actions for {user.name}</span>
                           </GlassButton>
                         </td>
                       </tr>
@@ -283,25 +289,25 @@ export default function AdminBlockPage() {
             </GlassTabsContent>
             <GlassTabsContent value="notifications">
               <div className="space-y-3">
-                <div className="flex items-center justify-between p-3 rounded-lg bg-white/5">
+                  <button type="button" aria-pressed={notifications.email} onClick={() => setNotifications((current) => ({ ...current, email: !current.email }))} className="flex w-full items-center justify-between p-3 rounded-lg bg-white/5 text-left">
                   <span className="text-white/80 text-sm">Email notifications</span>
-                  <div className="w-10 h-6 bg-cyan-500/50 rounded-full relative">
-                    <div className="absolute right-0.5 top-0.5 w-5 h-5 bg-white rounded-full" />
+                    <div className={`w-10 h-6 rounded-full relative ${notifications.email ? "bg-cyan-500/50" : "bg-white/20"}`}>
+                      <div className={`absolute top-0.5 w-5 h-5 rounded-full ${notifications.email ? "right-0.5 bg-white" : "left-0.5 bg-white/60"}`} />
                   </div>
-                </div>
-                <div className="flex items-center justify-between p-3 rounded-lg bg-white/5">
+                  </button>
+                  <button type="button" aria-pressed={notifications.push} onClick={() => setNotifications((current) => ({ ...current, push: !current.push }))} className="flex w-full items-center justify-between p-3 rounded-lg bg-white/5 text-left">
                   <span className="text-white/80 text-sm">Push notifications</span>
-                  <div className="w-10 h-6 bg-white/20 rounded-full relative">
-                    <div className="absolute left-0.5 top-0.5 w-5 h-5 bg-white/60 rounded-full" />
+                    <div className={`w-10 h-6 rounded-full relative ${notifications.push ? "bg-cyan-500/50" : "bg-white/20"}`}>
+                      <div className={`absolute top-0.5 w-5 h-5 rounded-full ${notifications.push ? "right-0.5 bg-white" : "left-0.5 bg-white/60"}`} />
                   </div>
-                </div>
-                <div className="flex items-center justify-between p-3 rounded-lg bg-white/5">
+                  </button>
+                  <button type="button" aria-pressed={notifications.weekly} onClick={() => setNotifications((current) => ({ ...current, weekly: !current.weekly }))} className="flex w-full items-center justify-between p-3 rounded-lg bg-white/5 text-left">
                   <span className="text-white/80 text-sm">Weekly digest</span>
-                  <div className="w-10 h-6 bg-cyan-500/50 rounded-full relative">
-                    <div className="absolute right-0.5 top-0.5 w-5 h-5 bg-white rounded-full" />
-                  </div>
+                    <div className={`w-10 h-6 rounded-full relative ${notifications.weekly ? "bg-cyan-500/50" : "bg-white/20"}`}>
+                      <div className={`absolute top-0.5 w-5 h-5 rounded-full ${notifications.weekly ? "right-0.5 bg-white" : "left-0.5 bg-white/60"}`} />
+                    </div>
+                  </button>
                 </div>
-              </div>
             </GlassTabsContent>
             <GlassTabsContent value="security">
               <div className="space-y-4">
