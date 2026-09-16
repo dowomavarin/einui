@@ -1,137 +1,18 @@
-import Link from "next/link"
-import {
-  GlassCard,
-  GlassCardContent,
-  GlassCardDescription,
-  GlassCardHeader,
-  GlassCardTitle,
-} from "@/registry/liquid-glass/glass-card"
-import { GlassButton } from "@/registry/liquid-glass/glass-button"
-import { CodeBlockWithCopy } from "@/components/docs/code-block-with-copy"
-import { ArrowRight, ArrowLeft, Moon, Sun } from "lucide-react"
+import Link from "next/link";
+import { ArrowLeft, ArrowRight, Moon, Sun } from "lucide-react";
+import { CodeBlockWithCopy } from "@/components/docs/code-block-with-copy";
+import { PageHeader } from "@/components/docs/page-header";
+import { GlassButton } from "@/registry/liquid-glass/glass-button";
 
 export default function DarkModePage() {
   return (
-    <div className="container max-w-4xl mx-auto px-4 py-12 lg:py-16">
-      {/* Header */}
-      <div className="mb-12">
-        <div className="flex items-center gap-2 mb-4">
-          <span className="rounded-full bg-indigo-500/20 px-3 py-1 text-xs font-medium text-indigo-400">
-            Customization
-          </span>
-        </div>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Dark Mode</h1>
-        <p className="text-xl text-white/60 leading-relaxed">
-          Ein UI components are designed dark-first, with optional light mode support.
-        </p>
-      </div>
-
-      {/* Dark First */}
-      <GlassCard className="mb-8">
-        <GlassCardHeader>
-          <GlassCardTitle className="flex items-center gap-2">
-            <Moon className="h-5 w-5 text-indigo-400" />
-            Dark-First Design
-          </GlassCardTitle>
-          <GlassCardDescription>Ein UI is optimized for dark backgrounds</GlassCardDescription>
-        </GlassCardHeader>
-        <GlassCardContent>
-          <p className="text-white/70 mb-4">
-            The liquid glass aesthetic works best on dark backgrounds where the transparency, blur effects, and glowing
-            gradients can truly shine. All components are designed with dark mode as the primary use case.
-          </p>
-          <CodeBlockWithCopy
-            code={`/* Recommended background */
-.app-background {
-  background: linear-gradient(
-    to bottom right,
-    #0f172a,  /* slate-900 */
-    #1e1b4b,  /* purple tint */
-    #0f172a   /* slate-900 */
-  );
-}`}
-          />
-        </GlassCardContent>
-      </GlassCard>
-
-      {/* Theme Provider */}
-      <div className="mb-12">
-        <h2 className="text-2xl font-bold text-white mb-6">Theme Provider</h2>
-
-        <GlassCard className="mb-6">
-          <GlassCardHeader>
-            <GlassCardTitle>Using next-themes</GlassCardTitle>
-            <GlassCardDescription>Set up theme switching with next-themes</GlassCardDescription>
-          </GlassCardHeader>
-          <GlassCardContent className="space-y-4">
-            <CodeBlockWithCopy code="npm install next-themes" />
-
-            <CodeBlockWithCopy
-              code={`// components/theme-provider.tsx
-"use client"
-
-import * as React from "react"
-import { ThemeProvider as NextThemesProvider } from "next-themes"
-
-export function ThemeProvider({ children, ...props }) {
-  return (
-    <NextThemesProvider
-      attribute="class"
-      defaultTheme="dark"
-      {...props}
-    >
-      {children}
-    </NextThemesProvider>
-  )
-}`}
-              filename="theme-provider.tsx"
-            />
-          </GlassCardContent>
-        </GlassCard>
-
-        <GlassCard>
-          <GlassCardHeader>
-            <GlassCardTitle className="flex items-center gap-2">
-              <Sun className="h-5 w-5 text-yellow-400" />
-              Light Mode Support
-            </GlassCardTitle>
-          </GlassCardHeader>
-          <GlassCardContent>
-            <p className="text-white/70 mb-4">
-              While dark mode is recommended, you can add light mode support with adjusted variables:
-            </p>
-            <CodeBlockWithCopy
-              code={`.light {
-  --glass-bg: rgba(0, 0, 0, 0.03);
-  --glass-border: rgba(0, 0, 0, 0.08);
-  --text-primary: rgba(0, 0, 0, 0.9);
-  --text-secondary: rgba(0, 0, 0, 0.6);
-
-  /* Softer glows for light mode */
-  --glow-cyan: rgba(6, 182, 212, 0.15);
-  --glow-purple: rgba(147, 51, 234, 0.15);
-}`}
-              filename="globals.css"
-            />
-          </GlassCardContent>
-        </GlassCard>
-      </div>
-
-      {/* Navigation */}
-      <div className="flex justify-between">
-        <Link href="/docs/theming">
-          <GlassButton variant="ghost" className="group">
-            <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />
-            Theming
-          </GlassButton>
-        </Link>
-        <Link href="/docs/cli">
-          <GlassButton variant="primary" className="group">
-            CLI
-            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-          </GlassButton>
-        </Link>
-      </div>
+    <div className="mx-auto max-w-4xl px-5 py-12 sm:px-8 lg:py-16">
+      <PageHeader category="Customize" title="Dark mode" description="Ein UI is designed dark-first, but the copied source can follow the theme contract of your application." />
+      <section aria-labelledby="dark-first" className="border-y border-white/10 py-8"><div className="flex items-start gap-4"><Moon className="mt-1 size-5 text-violet-300" aria-hidden="true" /><div><h2 id="dark-first" className="text-xl font-semibold text-white">Dark-first is a starting point</h2><p className="mt-2 max-w-2xl text-sm leading-7 text-white/60">Transparent surfaces, blur, and glow are tuned for a dark background. In a light theme, lower glow opacity and increase border contrast so content remains legible.</p></div></div><div className="mt-6"><CodeBlockWithCopy language="css" filename="app/globals.css" code={`.dark {\n  --glass-bg: rgba(255, 255, 255, 0.08);\n  --glass-border: rgba(255, 255, 255, 0.15);\n  --glass-glow-cyan: rgba(6, 182, 212, 0.24);\n}`} /></div></section>
+      <section aria-labelledby="provider" className="py-10"><h2 id="provider" className="text-xl font-semibold text-white">Connect your theme provider</h2><p className="mt-2 max-w-2xl text-sm leading-7 text-white/60">The repository includes a thin `ThemeProvider` wrapper, but the current root layout does not mount it. If your app needs theme switching, wire the provider into your own root layout.</p><div className="mt-5 space-y-5"><CodeBlockWithCopy language="tsx" filename="components/theme-provider.tsx" code={`"use client";\n\nimport * as React from "react";\nimport { ThemeProvider as NextThemesProvider } from "next-themes";\n\nexport function ThemeProvider({ children }: { children: React.ReactNode }) {\n  return (\n    <NextThemesProvider attribute="class" defaultTheme="system" enableSystem>\n      {children}\n    </NextThemesProvider>\n  );\n}`} /><CodeBlockWithCopy language="tsx" filename="app/layout.tsx" code={`<body>\n  <ThemeProvider>{children}</ThemeProvider>\n</body>`} /></div></section>
+      <section aria-labelledby="light" className="border-t border-white/10 py-10"><div className="flex items-start gap-4"><Sun className="mt-1 size-5 text-amber-200" aria-hidden="true" /><div><h2 id="light" className="text-xl font-semibold text-white">Tune light surfaces deliberately</h2><p className="mt-2 max-w-2xl text-sm leading-7 text-white/60">Use the same variable names in your light theme selector. Keep the background, border, and glow values related so a transparent card does not disappear.</p></div></div><div className="mt-5"><CodeBlockWithCopy language="css" filename="app/globals.css" code={`:root {\n  --glass-bg: rgba(15, 23, 42, 0.04);\n  --glass-border: rgba(15, 23, 42, 0.14);\n  --glass-shadow: rgba(15, 23, 42, 0.16);\n  --glass-glow-cyan: rgba(6, 182, 212, 0.12);\n}`} /></div></section>
+      <section aria-labelledby="check" className="border-t border-white/10 py-10"><h2 id="check" className="text-xl font-semibold text-white">Before you ship</h2><ul className="mt-4 grid gap-3 text-sm leading-6 text-white/60 sm:grid-cols-2"><li className="rounded-lg bg-white/[0.03] p-3">Check text and focus contrast in both themes.</li><li className="rounded-lg bg-white/[0.03] p-3">Test transparent surfaces over real content.</li><li className="rounded-lg bg-white/[0.03] p-3">Avoid rendering theme-dependent UI before mount.</li><li className="rounded-lg bg-white/[0.03] p-3">Respect reduced motion for glow and transitions.</li></ul></section>
+      <div className="flex flex-col-reverse gap-3 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between"><Link href="/docs/theming"><GlassButton variant="ghost"><ArrowLeft className="mr-2 size-4" aria-hidden="true" />Theming</GlassButton></Link><Link href="/docs/cli"><GlassButton variant="primary">CLI <ArrowRight className="ml-2 size-4" aria-hidden="true" /></GlassButton></Link></div>
     </div>
-  )
+  );
 }

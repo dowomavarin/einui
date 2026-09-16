@@ -1,157 +1,25 @@
 import Link from "next/link";
-import {
-  GlassCard,
-  GlassCardContent,
-  GlassCardDescription,
-  GlassCardHeader,
-  GlassCardTitle,
-} from "@/registry/liquid-glass/glass-card";
-import { GlassButton } from "@/registry/liquid-glass/glass-button";
+import { ArrowLeft, ArrowRight, Check, Package, Terminal } from "lucide-react";
 import { CodeBlockWithCopy } from "@/components/docs/code-block-with-copy";
-import { ArrowRight, ArrowLeft, Terminal, Zap, Package } from "lucide-react";
+import { PageHeader } from "@/components/docs/page-header";
+import { GlassButton } from "@/registry/liquid-glass/glass-button";
+import { getInstallCommand, getRegistryUrl } from "@/lib/docs/docs-content";
 
 const commands = [
-  {
-    name: "add",
-    description: "Add a component to your project",
-    usage: "npx shadcn@latest add [component]",
-    example: "npx shadcn@latest add @einui/glass-card",
-  },
-  {
-    name: "diff",
-    description: "Check for differences between local and remote components",
-    usage: "npx shadcn@latest diff [component]",
-    example: "npx shadcn@latest diff @einui/glass-button",
-  },
+  { name: "init", purpose: "Create or configure shadcn in a project.", usage: "npx shadcn@latest init", example: "npx shadcn@latest init" },
+  { name: "add", purpose: "Copy one or more registry items into your project.", usage: "npx shadcn@latest add [items...]", example: `${getInstallCommand("glass-card")} ${"@einui/glass-button"}` },
+  { name: "diff", purpose: "Compare a local item with its registry source.", usage: "npx shadcn@latest diff [item]", example: "npx shadcn@latest diff @einui/glass-card" },
 ];
 
 export default function CLIPage() {
   return (
-    <div className="container max-w-4xl mx-auto px-4 py-12 lg:py-16">
-      {/* Header */}
-      <div className="mb-12">
-        <div className="flex items-center gap-2 mb-4">
-          <span className="rounded-full bg-green-500/20 px-3 py-1 text-xs font-medium text-green-400">
-            Tools
-          </span>
-        </div>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">CLI</h1>
-        <p className="text-xl text-white/60 leading-relaxed">
-          Use the Shadcn CLI to install Ein UI components into your project.
-        </p>
-      </div>
-
-      {/* Quick Start */}
-      <GlassCard className="mb-8">
-        <GlassCardHeader>
-          <GlassCardTitle className="flex items-center gap-2">
-            <Zap className="h-5 w-5 text-yellow-400" />
-            Quick Start
-          </GlassCardTitle>
-          <GlassCardDescription>Install your first component in seconds</GlassCardDescription>
-        </GlassCardHeader>
-        <GlassCardContent className="space-y-4">
-          <p className="text-white/70">
-            Ein UI uses the standard Shadcn CLI. If you don&apos;t have it set up, run:
-          </p>
-          <CodeBlockWithCopy code="npx shadcn@latest init" />
-
-          <p className="text-white/70">Then add any Ein UI component:</p>
-          <CodeBlockWithCopy code="npx shadcn@latest add @einui/glass-card" />
-        </GlassCardContent>
-      </GlassCard>
-
-      {/* Commands */}
-      <div className="mb-12">
-        <h2 className="text-2xl font-bold text-white mb-6">Commands</h2>
-
-        <div className="space-y-4">
-          {commands.map((cmd) => (
-            <GlassCard key={cmd.name}>
-              <GlassCardHeader>
-                <GlassCardTitle className="flex items-center gap-2">
-                  <Terminal className="h-5 w-5 text-cyan-400" />
-                  {cmd.name}
-                </GlassCardTitle>
-                <GlassCardDescription>{cmd.description}</GlassCardDescription>
-              </GlassCardHeader>
-              <GlassCardContent className="space-y-3">
-                <div>
-                  <p className="text-xs text-white/50 mb-2">Usage</p>
-                  <CodeBlockWithCopy code={cmd.usage} />
-                </div>
-                <div>
-                  <p className="text-xs text-white/50 mb-2">Example</p>
-                  <CodeBlockWithCopy code={cmd.example} />
-                </div>
-              </GlassCardContent>
-            </GlassCard>
-          ))}
-        </div>
-      </div>
-
-      {/* Registry Configuration */}
-      <GlassCard className="mb-12">
-        <GlassCardHeader>
-          <GlassCardTitle className="flex items-center gap-2">
-            <Package className="h-5 w-5 text-purple-400" />
-            Registry Configuration
-          </GlassCardTitle>
-          <GlassCardDescription>
-            Add the Ein registry for easier component installation
-          </GlassCardDescription>
-        </GlassCardHeader>
-        <GlassCardContent className="space-y-4">
-          <p className="text-white/70">
-            Add the Ein registry namespace to your{" "}
-            <code className="bg-white/10 px-2 py-0.5 rounded">components.json</code>:
-          </p>
-          <CodeBlockWithCopy
-            code={`{
-  "$schema": "https://ui.shadcn.com/schema.json",
-  "style": "new-york",
-  "rsc": true,
-  "tsx": true,
-  "tailwind": {
-    "config": "",
-    "css": "app/globals.css",
-    "baseColor": "neutral",
-    "cssVariables": true
-  },
-  "aliases": {
-    "components": "@/components",
-    "utils": "@/lib/utils",
-    "ui": "@/components/ui",
-    "lib": "@/lib",
-    "hooks": "@/hooks"
-  },
-  "registries": {
-    "@einui": "https://ui.eindev.ir/r/{name}"
-  }
-}`}
-            filename="components.json"
-          />
-
-          <p className="text-white/70">Now you can install components using the short syntax:</p>
-          <CodeBlockWithCopy code="npx shadcn@latest add @einui/glass-card @einui/glass-button" />
-        </GlassCardContent>
-      </GlassCard>
-
-      {/* Navigation */}
-      <div className="flex justify-between">
-        <Link href="/docs/dark-mode">
-          <GlassButton variant="ghost" className="group">
-            <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />
-            Dark Mode
-          </GlassButton>
-        </Link>
-        <Link href="/docs/registry">
-          <GlassButton variant="primary" className="group">
-            Registry
-            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-          </GlassButton>
-        </Link>
-      </div>
+    <div className="mx-auto max-w-4xl px-5 py-12 sm:px-8 lg:py-16">
+      <PageHeader category="Reference" title="CLI" description="Use the shadcn CLI to resolve Ein UI registry items and copy their source into your project." />
+      <section aria-labelledby="model" className="border-y border-white/10 py-8"><div className="flex items-start gap-4"><Terminal className="mt-1 size-5 text-cyan-300" aria-hidden="true" /><div><h2 id="model" className="text-xl font-semibold text-white">The model</h2><p className="mt-2 max-w-2xl text-sm leading-7 text-white/60">The CLI is a source distribution workflow. It writes files and dependencies into your app; Ein UI is not a runtime package you import from `node_modules`.</p></div></div><div className="mt-6"><CodeBlockWithCopy code="npx shadcn@latest add @einui/glass-card" language="bash" /></div></section>
+      <section aria-labelledby="commands" className="py-10"><h2 id="commands" className="text-xl font-semibold text-white">Command reference</h2><div className="mt-5 divide-y divide-white/10 border-y border-white/10">{commands.map((command) => <div key={command.name} className="py-6"><div className="flex items-start gap-4"><span className="mt-0.5 rounded-md bg-white/6 px-2 py-1 font-mono text-sm text-cyan-200">{command.name}</span><p className="text-sm leading-6 text-white/60">{command.purpose}</p></div><div className="mt-4 grid gap-3 sm:grid-cols-2"><div><p className="mb-2 text-xs text-white/40">Usage</p><CodeBlockWithCopy code={command.usage} language="bash" /></div><div><p className="mb-2 text-xs text-white/40">Example</p><CodeBlockWithCopy code={command.example} language="bash" /></div></div></div>)}</div></section>
+      <section aria-labelledby="registry" className="border-t border-white/10 py-10"><div className="flex items-start gap-4"><Package className="mt-1 size-5 text-violet-300" aria-hidden="true" /><div><h2 id="registry" className="text-xl font-semibold text-white">Register Ein UI once</h2><p className="mt-2 max-w-2xl text-sm leading-7 text-white/60">Add this fragment to the existing `components.json`. The namespace expands <code>&#123;@einui/name&#125;</code> into the remote registry URL.</p></div></div><div className="mt-5 space-y-4"><CodeBlockWithCopy language="json" filename="components.json" code={`"registries": {\n  "@einui": "${getRegistryUrl()}"\n}`} /><p className="text-sm leading-6 text-white/55">The full project configuration stays yours. The registry only tells shadcn where to resolve Ein UI items.</p></div></section>
+      <section aria-labelledby="checks" className="border-t border-white/10 py-10"><h2 id="checks" className="text-xl font-semibold text-white">When a command fails</h2><ul className="mt-4 space-y-3 text-sm leading-6 text-white/60"><li className="flex gap-3"><Check className="mt-1 size-4 shrink-0 text-cyan-300" aria-hidden="true" />Confirm the namespace URL uses <code>https://ui.eindev.ir/r/&#123;name&#125;.json</code>.</li><li className="flex gap-3"><Check className="mt-1 size-4 shrink-0 text-cyan-300" aria-hidden="true" />Confirm the item name exists in the <Link href="/docs/registry" className="text-cyan-200 underline underline-offset-4">registry catalog</Link>.</li><li className="flex gap-3"><Check className="mt-1 size-4 shrink-0 text-cyan-300" aria-hidden="true" />If files already exist, inspect the diff before replacing local changes.</li><li className="flex gap-3"><Check className="mt-1 size-4 shrink-0 text-cyan-300" aria-hidden="true" />Install dependency errors reported by the item, then run the command again.</li></ul></section>
+      <div className="flex flex-col-reverse gap-3 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between"><Link href="/docs/dark-mode"><GlassButton variant="ghost"><ArrowLeft className="mr-2 size-4" aria-hidden="true" />Dark mode</GlassButton></Link><Link href="/docs/registry"><GlassButton variant="primary">Registry <ArrowRight className="ml-2 size-4" aria-hidden="true" /></GlassButton></Link></div>
     </div>
   );
 }
