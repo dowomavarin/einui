@@ -252,7 +252,7 @@ export default function HomePage() {
             {features.map((feature) => (
               <div
                 key={feature.title}
-                className="group rounded-2xl border border-white/7 bg-white/[0.025] p-6 transition-colors hover:border-cyan-300/20 hover:bg-white/[0.045] lg:nth-[2]:translate-y-8"
+                className="group rounded-2xl border border-white/7 bg-white/2.5 p-6 transition-colors hover:border-cyan-300/20 hover:bg-white/4.5 "
               >
                 <div className="mb-7">
                   <div className="w-fit rounded-xl bg-linear-to-br from-cyan-500/10 to-purple-500/10 p-2.5">

@@ -67,7 +67,7 @@ export default function PricingBlockPage() {
   const [isYearly, setIsYearly] = useState(false);
 
   return (
-    <div className="min-h-full py-4 flex items-center justify-center bg-linear-to-br from-slate-950 via-purple-900 to-slate-950 px-3">
+    <div className="min-h-full py-4 flex items-center justify-center px-3">
       <div className="w-full max-w-4xl mx-auto space-y-12">
         {/* Header */}
         <div className="text-center space-y-4">

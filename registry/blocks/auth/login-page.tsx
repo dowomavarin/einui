@@ -23,7 +23,7 @@ export default function LoginPageBlock() {
   }
 
   return (
-    <div className="min-h-full py-4 flex items-center justify-center bg-linear-to-br from-slate-950 via-purple-900 to-slate-950 px-4">
+    <div className="min-h-full py-4 flex items-center justify-center px-4">
       <GlassCard className="w-full max-w-md">
         <GlassCardHeader className="space-y-2 text-center">
           <div className="flex justify-center mb-2">

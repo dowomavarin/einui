@@ -33,7 +33,7 @@ export default function ForgotPasswordPageBlock() {
   }
 
   return (
-    <div className="h-full flex py-14 items-center justify-center bg-linear-to-br from-slate-950 via-purple-900 to-slate-950 px-4">
+    <div className="h-full flex py-14 items-center justify-center px-4">
       <GlassCard className="w-full max-w-md">
         {!isSubmitted ? (
           <>

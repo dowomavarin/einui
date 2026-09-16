@@ -51,7 +51,7 @@ export default function SignupPageBlock() {
   }
 
   return (
-    <div className=" flex items-center justify-center bg-linear-to-br from-slate-950 via-purple-900 to-slate-950 px-4 py-8">
+    <div className=" flex items-center justify-center px-4 py-2">
       <GlassCard className="w-full max-w-md">
         <GlassCardHeader className="space-y-2 text-center">
           <div className="flex justify-center mb-2">
