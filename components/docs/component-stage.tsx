@@ -7,6 +7,8 @@ interface ComponentStageProps {
   children: ReactNode
   size?: ComponentStageSize
   label?: string
+  className?: string
+  showBackdrop?: boolean
 }
 
 const sizeClasses: Record<ComponentStageSize, string> = {
@@ -20,6 +22,8 @@ export function ComponentStage({
   children,
   size = "default",
   label = "Live component preview",
+  className,
+  showBackdrop = true,
 }: ComponentStageProps) {
   return (
     <div
@@ -27,23 +31,28 @@ export function ComponentStage({
         "relative isolate flex w-full items-center justify-center overflow-hidden rounded-2xl",
         "border border-white/10 bg-[#101923] px-5 py-8 sm:px-8",
         sizeClasses[size],
+        className,
       )}
       aria-label={label}
     >
-      <div
-        className="pointer-events-none absolute inset-0 -z-10 opacity-60"
-        aria-hidden="true"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
-          maskImage: "linear-gradient(to bottom, black, transparent 85%)",
-        }}
-      />
-      <div
-        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 size-56 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-400/10 blur-3xl"
-        aria-hidden="true"
-      />
+      {showBackdrop && (
+        <>
+          <div
+            className="pointer-events-none absolute inset-0 -z-10 opacity-60"
+            aria-hidden="true"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px)",
+              backgroundSize: "32px 32px",
+              maskImage: "linear-gradient(to bottom, black, transparent 85%)",
+            }}
+          />
+          <div
+            className="pointer-events-none absolute left-1/2 top-1/2 -z-10 size-56 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-400/10 blur-3xl"
+            aria-hidden="true"
+          />
+        </>
+      )}
       <div className="relative flex w-full items-center justify-center">{children}</div>
     </div>
   )
