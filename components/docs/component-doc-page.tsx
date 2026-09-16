@@ -33,7 +33,7 @@ export function ComponentDocPage({ component }: ComponentDocPageProps) {
       <CLIInstall componentName={component.registryName} />
 
       {(component.usage || component.dependencies?.length) && (
-        <aside className="mb-14 grid gap-4 rounded-2xl border border-white/10 bg-white/[0.025] p-5 sm:grid-cols-[1fr_auto] sm:items-start">
+        <aside className="mb-14 grid gap-4 rounded-2xl border border-white/10 bg-white/2.5 p-5 sm:grid-cols-[1fr_auto] sm:items-start">
           {component.usage && (
             <div>
               <h2 className="text-sm font-medium text-white">When to use it</h2>
