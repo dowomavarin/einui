@@ -23,16 +23,17 @@ import { generateNavigation } from "@/contants/nav-items";
 
 function SidebarNavContent() {
   const pathname = usePathname();
-  const navRef = useRef<HTMLUListElement>(null);
   const activeLinkRef = useRef<HTMLAnchorElement>(null);
+  const hasMounted = useRef(false);
 
   useEffect(() => {
-    if (activeLinkRef.current) {
+    if (hasMounted.current && activeLinkRef.current) {
       activeLinkRef.current.scrollIntoView({
-        behavior: "smooth",
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
         block: "center",
       });
     }
+    hasMounted.current = true;
   }, [pathname]);
 
   const navigation = generateNavigation()
@@ -78,7 +79,7 @@ function SidebarNavContent() {
               {section.title}
             </SidebarGroupLabel>
             <SidebarGroupContent>
-              <SidebarMenu ref={navRef}>
+              <SidebarMenu>
                 {section.items.map((item) => (
                   <SidebarMenuItem key={item.href}>
                     <SidebarMenuButton

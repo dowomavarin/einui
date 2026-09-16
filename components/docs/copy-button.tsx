@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useCallback } from "react"
+import { useState, useCallback } from "react"
 import { Copy, Check, AlertCircle } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -31,7 +31,7 @@ export function CopyButton({
       await navigator.clipboard.writeText(text)
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
-    } catch (err) {
+    } catch {
       setError(true)
       setTimeout(() => setError(false), 2000)
     }
@@ -39,6 +39,7 @@ export function CopyButton({
 
   return (
     <button
+      type="button"
       onClick={handleCopy}
       className={cn(
         "inline-flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-offset-1 focus:ring-offset-slate-950/40 active:scale-95",
@@ -49,7 +50,7 @@ export function CopyButton({
             : "bg-white/10 text-white/70 hover:bg-white/20 hover:text-white border border-white/10 hover:border-white/20",
         className
       )}
-      title={copied ? "Copied!" : error ? "Failed to copy" : "Copy to clipboard"}
+      aria-label={copied ? "Copied" : error ? "Copy failed" : label || "Copy code"}
       aria-pressed={copied}
     >
       {copied ? (

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -9,8 +9,23 @@ import { generateNavigation } from "@/contants/nav-items";
 
 export function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
   const navigation = generateNavigation();
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen]);
 
   return (
     <div className="lg:hidden">
@@ -26,8 +41,13 @@ export function MobileNav() {
             <span className="text-lg font-bold text-white">Ein UI</span>
           </Link>
           <button
+            ref={menuButtonRef}
+            type="button"
             onClick={() => setIsOpen(!isOpen)}
             className="p-2 rounded-xl bg-white/5 text-white hover:bg-white/10 transition-colors"
+            aria-label={isOpen ? "Close documentation navigation" : "Open documentation navigation"}
+            aria-expanded={isOpen}
+            aria-controls="mobile-docs-navigation"
           >
             {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -41,6 +61,8 @@ export function MobileNav() {
           onClick={() => setIsOpen(false)}
         >
           <nav
+            id="mobile-docs-navigation"
+            aria-label="Documentation navigation"
             className="absolute top-16 left-0 right-0 max-h-[calc(100vh-4rem)] overflow-y-auto bg-slate-900/95 backdrop-blur-xl border-b border-white/10"
             onClick={(e) => e.stopPropagation()}
           >
